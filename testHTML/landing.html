@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title>Landing Section</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" type="text/css"  href="style/reset.css"> -->
+        <link rel="stylesheet" type="text/css"  href="style/style.css">
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="row" id="landingTitle">
+                <div class="col-lg">
+                    <h1 id="welcome">Welcome <span id="name"></span></h1>
+                </div>
+            </div>
+            <div class="row" id="landingRow">
+                <div class="col-lg-7">
+                    <div class="card">
+                        <h5 class="card-header">Cataloged Items</h5>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name of Item</th>
+                                    <th scope="col">Price of Item($)</th>
+                                    <th scope="col">Attachments</th>
+                                    <th scope="col">Select</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <th scope="row">1</th>
+                                    <td>Leather Couch</td>
+                                    <td>$1,100</td>
+                                    <td><i class="fas fa-file"></i></td>
+                                    <td><a href=""><input type="radio" name="select"></a></td>
+                                    </tr>
+                                    <tr>
+                                    <th scope="row">2</th>
+                                    <td>French Tableset</td>
+                                    <td>$650</td>
+                                    <td><i class="fas fa-file"></i></td>
+                                    <td><input type="radio" name="select"></td>
+                                    </tr>
+                                    <tr>
+                                    <th scope="row">3</th>
+                                    <td>Ipad</td>
+                                    <td>$450</td>
+                                    <td><i class="fas fa-file"></i></td>
+                                    <td><input type="radio" name="select"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="button" class="btn btn-outline-danger" id="delete">Delete Selected Item(s)</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Add New Item/Update Current
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">Name of Item</label>
+                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Office Desk">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Item Category</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>Please Select One</option>
+                                    <option>Furniture</option>
+                                    <option>Electronics</option>
+                                    <option>Home Appliances</option>
+                                    <option>Small Motor</option>
+                                    <option>Cosmetics</option>
+                                    <option>Clothing</option>
+                                    <option>Personal Fitness Device</option>
+                                    <option>Toys</option>
+                                    <option>Rugs/Tapestry</option>
+                                    <option>Art/Memorabilia (Available with Pro)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">Price of item</label>
+                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="$3,500">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Upload attachment(s)</label>
+                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Description of item (optional)</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                            </form>
+                            <button type="button" class="btn btn-warning" id="update">Update</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8"></div>
+                <div class="col-lg-4">
+                    <img src="../images/mochiLogo.png" id="landingImg">
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script text="text/javascript">
+            $(document).ready(() => {
+               var name = prompt("Please enter your name:");
+               $("#name").html(name)
+            })
+        </script>
+    </body>
+</html>
