@@ -1,0 +1,65 @@
+#indexBody {
+    background: url("../images/camera.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#welcome {
+    margin-top: 50px;
+    text-align: center;
+}
+
+img{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#landingImg {
+    margin-right: 35px;
+    height: auto;
+    width: 30%;
+}
+
+
+input {
+    cursor: pointer;
+}
+
+#loginRow {
+    padding-top: 35pt;
+    padding-bottom: 35pt;
+    border-right: solid 1pt gray;
+    border-left: solid 1pt gray;
+    box-shadow: 
+        12px 0 15px -4px rgba(31, 73, 125, 0.8), 
+        -12px 0 15px -4px rgba(31, 73, 125, 0.8);
+    /* opacity: 0.5; */
+    /* filter: alpha(opacity=50); */
+}
+
+#landingTitle {
+    border-bottom: solid 1pt gray;
+    margin-top: 50pt;
+    padding-bottom: 50pt;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+}
+
+
+#landingRow {
+    margin-top: 50px;
+}
+
+
+.fas {
+    cursor: pointer;
+}
+
+#welcome {
+    color: green
+}
