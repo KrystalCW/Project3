@@ -10,6 +10,15 @@ export function Input(props) {
   );
 }
 
+export function CheckBox(props) {
+  return (
+    <div className="form-group form-check">
+      <input type="checkbox" className="form-check-input" id="exampleCheck1" {...props} />
+      <label className="form-check-label" htmlFor="exampleCheck1">{props.label}</label>
+    </div>
+  );
+}
+
 export function TextArea(props) {
   return (
     <div className="form-group">
