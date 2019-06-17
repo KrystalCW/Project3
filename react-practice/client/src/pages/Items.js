@@ -6,7 +6,9 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
-import "./style.css"
+// import "./reset.css";
+import "./style.css";
+import logo from "../images/mochiLogo.png";
 
 class Items extends Component {
   
@@ -66,13 +68,13 @@ class Items extends Component {
   render() {
     return (
         <Container fluid>
-            <Row id="landingTitle">
-                <div className="col-lg">
+            <Row>
+                <div className="col-lg" id="landingTitle">
                     <h1 id="welcome">Welcome <span id="name"></span></h1>
                 </div>
             </ Row>
-            <Row id="landingRow">
-                <div className="col-lg-7">
+            <Row>
+                <div className="col-lg-7"  id="landingRow">
                     <div className="card">
                         <h5 className="card-header">Cataloged Items</h5>
                         <div className="card-body">
@@ -81,18 +83,26 @@ class Items extends Component {
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Name of Item</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Original Purchase Date</th>
                                         <th scope="col">Price of Item($)</th>
                                         <th scope="col">Attachments</th>
-                                        <th scope="col">Select</th>
+                                        <th scope="col">Note</th>
+                                        <th scope="col">Update</th>
+                                        <th scope="col">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <th scope="row">1</th>
                                         <td>Leather Couch</td>
+                                        <td>1</td>
+                                        <td>1/1/2016</td>
                                         <td>$1,100</td>
                                         <td><i className="fas fa-file"></i></td>
-                                        {/* <td><a href=""><input type="radio" name="select"></a></td> */}
+                                        <td>This is a great couch</td>
+                                        <td><button type="button" class="btn btn-primary">Update</button></td>
+                                        <td><button type="button" class="btn btn-danger">Delete</button></td>
                                     </tr>
                                     {this.state.items.map(item => (
                                       <tr>
@@ -109,43 +119,49 @@ class Items extends Component {
                     </div>
                 </div>
         <div class="col-lg-1"></div>
-        <div class="col-lg-4">
+        <div class="col-lg-4" id="listrow">
           <div class="card">
             <div class="card-header">
                 Add New Item/Update Current
             </div>
             <div class="card-body">
               <form>
+                Name of object
                 <Input
                   value={this.state.name}
                   onChange={this.handleInputChange}
                   name="name"
                   placeholder="Name (required)"
                 />
+                Quantity
                 <Input
                   value={this.state.quantity}
                   onChange={this.handleInputChange}
                   name="quantity"
                   placeholder="Quantity (required)"
                 />
+                Original Purchase Date
                 <Input
                   value={this.state.originalPurchaseDate}
                   onChange={this.handleInputChange}
                   name="originalPurchaseDate"
                   placeholder="Original purchase/acquisition date"
                 />
+                Price of item
                 <Input
                   value={this.state.price}
                   onChange={this.handleInputChange}
                   name="price"
                   placeholder="Price"
                 />
+                Attachments
                 <Input
                   value={this.state.attachments}
                   onChange={this.handleInputChange}
                   name="attachments"
                   placeholder="attachments"
                 />
+                Note
                 <TextArea
                   value={this.state.notes}
                   onChange={this.handleInputChange}
@@ -163,6 +179,12 @@ class Items extends Component {
           </div>
         </div>
         </ Row>
+        <Row>
+          <div className="col-lg-8"></div>
+          <div className="col-lg-4">
+                <img src={logo} id="landingImg" />
+          </div>
+        </Row>
       </ Container>
       );
     }
