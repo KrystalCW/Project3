@@ -5,7 +5,7 @@ import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, CheckBox, TextArea, FormBtn, DropDown } from "../components/Form";
 // import "./reset.css";
 import "./style.css";
 import logo from "../images/mochiLogo.png";
@@ -14,9 +14,11 @@ class Items extends Component {
   
     state = {
         items: [],
+        categoryOptions: ["Home Goods", "Furniture", "Electronics", "Jewelry", "Artwork", "Tools/Equipment", "Musical Instruments"],
+        category: "",
         name: "",
         quantity: "",
-        scheduled: false,
+        scheduled: true,
         originalPurchaseDate: "",
         price: 0,
         attachments: "",
@@ -30,7 +32,14 @@ class Items extends Component {
   loadItems = () => {
     API.getItems()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ items: res.data, 
+          name: "", 
+          quantity: "", 
+          scheduled: "", 
+          originalPurchaseDate: "", 
+          price: "", 
+          attachments: "", 
+          notes: "" })
       )
       .catch(err => console.log(err));
   };
@@ -48,9 +57,18 @@ class Items extends Component {
     });
   };
 
+  checkBox = event => {
+    if (this.state.scheduled === false) {
+        this.setState({ scheduled: true })
+    } else {
+        this.setState({ scheduled: false })
+    }
+    console.log(this.state.scheduled);
+  }
+
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
+    if (this.state.name && this.state.quantity) {
       API.saveItem({
         name: this.state.name,
         quantity: this.state.quantity,
@@ -101,8 +119,8 @@ class Items extends Component {
                                         <td>$1,100</td>
                                         <td><i className="fas fa-file"></i></td>
                                         <td>This is a great couch</td>
-                                        <td><button type="button" class="btn btn-primary">Update</button></td>
-                                        <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                        <td><button type="button" className="btn btn-primary">Update</button></td>
+                                        <td><button type="button" className="btn btn-danger">Delete</button></td>
                                     </tr>
                                     {this.state.items.map(item => (
                                       <tr>
@@ -114,18 +132,26 @@ class Items extends Component {
                                     ))}
                                 </tbody>
                             </table>
-                            <button type="button" class="btn btn-outline-danger" id="delete">Delete Selected Item(s)</button>
+                            <button type="button" className="btn btn-outline-danger" id="delete">Delete Selected Item(s)</button>
                         </div>
                     </div>
                 </div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-4" id="listrow">
-          <div class="card">
-            <div class="card-header">
+        <div className="col-lg-1"></div>
+        <div className="col-lg-4" id="listrow">
+          <div className="card">
+            <div className="card-header">
                 Add New Item/Update Current
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <form>
+                Category
+                <DropDown 
+                  options={this.state.categoryOptions}
+                  value={this.state.category}
+                  onChange={this.handleInputChange}
+                  name="category"
+                  placeholder="Any"
+                />
                 Name of object
                 <Input
                   value={this.state.name}
@@ -139,6 +165,13 @@ class Items extends Component {
                   onChange={this.handleInputChange}
                   name="quantity"
                   placeholder="Quantity (required)"
+                />
+                Scheduled
+                <CheckBox
+                    value={this.state.scheduled}
+                    onChange={this.checkBox}
+                    name="scheduled"
+                    label="Scheduled"
                 />
                 Original Purchase Date
                 <Input

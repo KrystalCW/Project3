@@ -9,6 +9,9 @@ import { Input, TextArea, FormBtn, CheckBox } from "../components/Form";
 // import "./reset.css";
 import "./style.css";
 import logo from "../images/mochiLogo.png";
+// import bcrypt from "bcrypt";
+// const saltRounds = 10;
+// const plainTextPassword1 = "DFGh5546#%^___90";
 
 
 class Index extends Component {
@@ -19,7 +22,7 @@ class Index extends Component {
         confirmPassword: "",
         existingEmail: "",
         existingPassword: "",
-        rememberMe: false
+        rememberMe: false,
     }
 
     handleInputChange = event => {
@@ -29,6 +32,15 @@ class Index extends Component {
         });
         console.log(name, value)
       };
+
+    checkBox = event => {
+        if (this.state.rememberMe === false) {
+            this.setState({ rememberMe: true })
+        } else {
+            this.setState({ rememberMe: false })
+        }
+        console.log(this.state.rememberMe);
+    }
 
     render() {
         return (
@@ -67,7 +79,7 @@ class Index extends Component {
                                     />
                                     <FormBtn
                                         disabled={!(this.state.newEmail && this.state.newPassword && this.state.confirmPassword)}
-                                        onClick={this.handleFormSubmit}
+                                        onClick={this.handleNewSubmit}
                                         >
                                         Sign up for a new account!
                                     </FormBtn>
@@ -99,30 +111,16 @@ class Index extends Component {
                                     />
                                     <CheckBox
                                         value={this.state.rememberMe}
-                                        onChange={this.handleInputChange}
+                                        onChange={this.checkBox}
                                         name="rememberMe"
                                         label="Remember Me"
                                     />
                                     <FormBtn
                                         disabled={!(this.state.existingEmail && this.state.existingPassword)}
-                                        onClick={this.handleFormSubmit}
+                                        onClick={this.handleExistingSubmit}
                                         >
                                         Log-in
                                     </FormBtn>
-                                    {/* <div className="form-group">
-                                        <label htmlFor="exampleInputEmail1">Email address</label>
-                                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="exampleInputPassword1">Password</label>
-                                        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-                                    </div>
-                                    <div className="form-group form-check">
-                                        <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                                        <label className="form-check-label" htmlFor="exampleCheck1">Remember Me</label>
-                                    </div>
-                                    <button type="submit" className="btn btn-primary">Submit</button>
-                                    <div id="buttonDiv"></div> */}
                                 </form>
                             </div>
                         </div>        

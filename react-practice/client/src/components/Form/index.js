@@ -34,3 +34,19 @@ export function FormBtn(props) {
     </button>
   );
 }
+
+export function DropDown(props) {
+
+  return (
+    <div className="dropdown">
+      <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {props.placeholder}
+      </button>
+      <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {props.options.map(category => (
+          <a className="dropdown-item" href="#" key={category}>{category}</a>
+        ))}
+    </div>
+    </div>
+  )
+}
