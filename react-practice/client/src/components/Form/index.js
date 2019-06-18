@@ -38,15 +38,28 @@ export function FormBtn(props) {
 export function DropDown(props) {
 
   return (
-    <div className="dropdown">
-      <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {props.placeholder}
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown button
       </button>
-      <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        {props.options.map(category => (
-          <a className="dropdown-item" href="#" key={category}>{category}</a>
-        ))}
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
     </div>
-    </div>
+    
+    // <div className="dropdown">
+    //   <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    //     {props.placeholder}
+    //   </button>
+    //   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    //     <a className="dropdown-item" href="#">Home Goods</a>
+    //     {/* {props.options.map(category => (
+    //       <a className="dropdown-item" href="#" key={category}>{category}</a>
+    //     ))} */}
+    //   </div>
+    // </div>
   )
 }

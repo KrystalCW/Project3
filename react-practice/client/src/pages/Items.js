@@ -5,16 +5,21 @@ import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
-import { Input, CheckBox, TextArea, FormBtn, DropDown } from "../components/Form";
+import { Input, CheckBox, TextArea, FormBtn } from "../components/Form";
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownMenu from 'react-bootstrap/DropdownMenu';
 // import "./reset.css";
 import "./style.css";
 import logo from "../images/mochiLogo.png";
 
 class Items extends Component {
-  
-    state = {
+
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.select = this.select.bind(this);
+    this.state = {
         items: [],
-        categoryOptions: ["Home Goods", "Furniture", "Electronics", "Jewelry", "Artwork", "Tools/Equipment", "Musical Instruments"],
         category: "",
         name: "",
         quantity: "",
@@ -22,8 +27,10 @@ class Items extends Component {
         originalPurchaseDate: "",
         price: 0,
         attachments: "",
-        notes: ""
-  };
+        notes: "",
+        dropdownOpen: false,
+    };
+  }
 
   componentDidMount() {
     this.loadItems();
@@ -34,6 +41,7 @@ class Items extends Component {
       .then(res =>
         this.setState({ items: res.data, 
           name: "", 
+          category: "Any",
           quantity: "", 
           scheduled: "", 
           originalPurchaseDate: "", 
@@ -57,6 +65,19 @@ class Items extends Component {
     });
   };
 
+  toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
+
+  select(event) {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen,
+      category: event.target.innerText
+    });
+  }
+
   checkBox = event => {
     if (this.state.scheduled === false) {
         this.setState({ scheduled: true })
@@ -66,7 +87,9 @@ class Items extends Component {
     console.log(this.state.scheduled);
   }
 
+
   handleFormSubmit = event => {
+    console.log(this.state.name, this.state.quantity);
     event.preventDefault();
     if (this.state.name && this.state.quantity) {
       API.saveItem({
@@ -78,7 +101,8 @@ class Items extends Component {
         attachments: this.state.attachments,
         notes: this.state.notes
       })
-        .then(res => this.loadItems())
+        .then(console.log("Success!"))
+        // .then(res => this.loadItems())
         .catch(err => console.log(err));
     }
   };
@@ -145,13 +169,47 @@ class Items extends Component {
             <div className="card-body">
               <form>
                 Category
-                <DropDown 
-                  options={this.state.categoryOptions}
+
+                <Dropdown isopen={this.state.dropdownOpen} toggle={this.toggle}>
+                <span
+                  onClick={this.toggle}
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded={this.state.dropdownOpen}
+                >{this.state.value}
+                </span>
+                  <DropdownMenu>
+                    <div onClick={this.toggle.bind(this, 'furniture')}>Furniture</div>
+                    <div onClick={this.toggle.bind(this, 'jewelry')}>Jewelry</div>
+                    <div onClick={this.toggle.bind(this, 'electronics')}>Electronics</div>
+                    <div onClick={this.toggle.bind(this, 'weapons')}>Weapons</div>
+                    <div onClick={this.toggle.bind(this, 'instruments')}>Musical Instruments</div>
+                    <div onClick={this.toggle.bind(this, 'art')}>Art</div>
+                  </DropdownMenu>
+                </Dropdown>
+                {/* <Dropdown
+                  >
+                  <Dropdown.Toggle variant="success" id="dropdown-basic" >
+                    Any
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Furniture</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Jewelry</Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">Electronics/Appliances</Dropdown.Item>
+                    <Dropdown.Item href="#/action-1">Weapons</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Musical Instruments</Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">Art</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown> */}
+
+                {/* <DropDown 
+                  options="Home Goods"
                   value={this.state.category}
                   onChange={this.handleInputChange}
                   name="category"
                   placeholder="Any"
-                />
+                /> */}
                 Name of object
                 <Input
                   value={this.state.name}
