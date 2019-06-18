@@ -5,23 +5,32 @@ import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, CheckBox, TextArea, FormBtn } from "../components/Form";
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownMenu from 'react-bootstrap/DropdownMenu';
 // import "./reset.css";
 import "./style.css";
 import logo from "../images/mochiLogo.png";
 
 class Items extends Component {
-  
-    state = {
+
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.select = this.select.bind(this);
+    this.state = {
         items: [],
+        category: "",
         name: "",
         quantity: "",
-        scheduled: false,
+        scheduled: true,
         originalPurchaseDate: "",
         price: 0,
         attachments: "",
-        notes: ""
-  };
+        notes: "",
+        dropdownOpen: false,
+    };
+  }
 
   componentDidMount() {
     this.loadItems();
@@ -30,7 +39,15 @@ class Items extends Component {
   loadItems = () => {
     API.getItems()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ items: res.data, 
+          name: "", 
+          category: "Any",
+          quantity: "", 
+          scheduled: "", 
+          originalPurchaseDate: "", 
+          price: "", 
+          attachments: "", 
+          notes: "" })
       )
       .catch(err => console.log(err));
   };
@@ -48,9 +65,33 @@ class Items extends Component {
     });
   };
 
+  toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
+
+  select(event) {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen,
+      category: event.target.innerText
+    });
+  }
+
+  checkBox = event => {
+    if (this.state.scheduled === false) {
+        this.setState({ scheduled: true })
+    } else {
+        this.setState({ scheduled: false })
+    }
+    console.log(this.state.scheduled);
+  }
+
+
   handleFormSubmit = event => {
+    console.log(this.state.name, this.state.quantity);
     event.preventDefault();
-    if (this.state.title && this.state.author) {
+    if (this.state.name && this.state.quantity) {
       API.saveItem({
         name: this.state.name,
         quantity: this.state.quantity,
@@ -60,7 +101,8 @@ class Items extends Component {
         attachments: this.state.attachments,
         notes: this.state.notes
       })
-        .then(res => this.loadItems())
+        .then(console.log("Success!"))
+        // .then(res => this.loadItems())
         .catch(err => console.log(err));
     }
   };
@@ -101,8 +143,8 @@ class Items extends Component {
                                         <td>$1,100</td>
                                         <td><i className="fas fa-file"></i></td>
                                         <td>This is a great couch</td>
-                                        <td><button type="button" class="btn btn-primary">Update</button></td>
-                                        <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                        <td><button type="button" className="btn btn-primary">Update</button></td>
+                                        <td><button type="button" className="btn btn-danger">Delete</button></td>
                                     </tr>
                                     {this.state.items.map(item => (
                                       <tr>
@@ -114,18 +156,60 @@ class Items extends Component {
                                     ))}
                                 </tbody>
                             </table>
-                            <button type="button" class="btn btn-outline-danger" id="delete">Delete Selected Item(s)</button>
+                            <button type="button" className="btn btn-outline-danger" id="delete">Delete Selected Item(s)</button>
                         </div>
                     </div>
                 </div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-4" id="listrow">
-          <div class="card">
-            <div class="card-header">
+        <div className="col-lg-1"></div>
+        <div className="col-lg-4" id="listrow">
+          <div className="card">
+            <div className="card-header">
                 Add New Item/Update Current
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <form>
+                Category
+
+                <Dropdown isopen={this.state.dropdownOpen} toggle={this.toggle}>
+                <span
+                  onClick={this.toggle}
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded={this.state.dropdownOpen}
+                >{this.state.value}
+                </span>
+                  <DropdownMenu>
+                    <div onClick={this.toggle.bind(this, 'furniture')}>Furniture</div>
+                    <div onClick={this.toggle.bind(this, 'jewelry')}>Jewelry</div>
+                    <div onClick={this.toggle.bind(this, 'electronics')}>Electronics</div>
+                    <div onClick={this.toggle.bind(this, 'weapons')}>Weapons</div>
+                    <div onClick={this.toggle.bind(this, 'instruments')}>Musical Instruments</div>
+                    <div onClick={this.toggle.bind(this, 'art')}>Art</div>
+                  </DropdownMenu>
+                </Dropdown>
+                {/* <Dropdown
+                  >
+                  <Dropdown.Toggle variant="success" id="dropdown-basic" >
+                    Any
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Furniture</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Jewelry</Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">Electronics/Appliances</Dropdown.Item>
+                    <Dropdown.Item href="#/action-1">Weapons</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Musical Instruments</Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">Art</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown> */}
+
+                {/* <DropDown 
+                  options="Home Goods"
+                  value={this.state.category}
+                  onChange={this.handleInputChange}
+                  name="category"
+                  placeholder="Any"
+                /> */}
                 Name of object
                 <Input
                   value={this.state.name}
@@ -139,6 +223,13 @@ class Items extends Component {
                   onChange={this.handleInputChange}
                   name="quantity"
                   placeholder="Quantity (required)"
+                />
+                Scheduled
+                <CheckBox
+                    value={this.state.scheduled}
+                    onChange={this.checkBox}
+                    name="scheduled"
+                    label="Scheduled"
                 />
                 Original Purchase Date
                 <Input
