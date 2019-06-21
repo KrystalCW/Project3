@@ -1,16 +1,16 @@
 import React, { Component } from "react";
+import Modal from '../components/Modal'
 // import DeleteBtn from "../components/DeleteBtn";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
-import { Input, CheckBox, TextArea, FormBtn } from "../components/Form";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownMenu from 'react-bootstrap/DropdownMenu';
 // import "./reset.css";
 import "./style.css";
 import logo from "../images/mochiLogo.png";
+import Chart from "../components/Chart";
+
 
 class Items extends Component {
 
@@ -65,6 +65,7 @@ class Items extends Component {
     });
   };
 
+
   toggle() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
@@ -109,174 +110,23 @@ class Items extends Component {
 
   render() {
     return (
-        <Container fluid>
+        <div className="container">
             <Row>
                 <div className="col-lg" id="landingTitle">
                     <h1 id="welcome">Welcome <span id="name"></span></h1>
                 </div>
             </ Row>
             <Row>
-                <div className="col-lg-7"  id="landingRow">
-                    <div className="card">
-                        <h5 className="card-header">Cataloged Items</h5>
-                        <div className="card-body">
-                            <table className="table">
-                                <thead className="thead-light">
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Name of Item</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Original Purchase Date</th>
-                                        <th scope="col">Price of Item($)</th>
-                                        <th scope="col">Attachments</th>
-                                        <th scope="col">Note</th>
-                                        <th scope="col">Update</th>
-                                        <th scope="col">Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Leather Couch</td>
-                                        <td>1</td>
-                                        <td>1/1/2016</td>
-                                        <td>$1,100</td>
-                                        <td><i className="fas fa-file"></i></td>
-                                        <td>This is a great couch</td>
-                                        <td><button type="button" className="btn btn-primary">Update</button></td>
-                                        <td><button type="button" className="btn btn-danger">Delete</button></td>
-                                    </tr>
-                                    {this.state.items.map(item => (
-                                      <tr>
-                                        <th scope="col"></th>
-                                        <td>{item.name}</td>
-                                        <td>{item.price}</td>
-                                        <td>{item.attachments}</td>
-                                      </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                            <button type="button" className="btn btn-outline-danger" id="delete">Delete Selected Item(s)</button>
-                        </div>
-                    </div>
-                </div>
-        <div className="col-lg-1"></div>
-        <div className="col-lg-4" id="listrow">
-          <div className="card">
-            <div className="card-header">
-                Add New Item/Update Current
-            </div>
-            <div className="card-body">
-              <form>
-                Category
-
-                <Dropdown isopen={this.state.dropdownOpen} toggle={this.toggle}>
-                <span
-                  onClick={this.toggle}
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded={this.state.dropdownOpen}
-                >{this.state.value}
-                </span>
-                  <DropdownMenu>
-                    <div onClick={this.toggle.bind(this, 'furniture')}>Furniture</div>
-                    <div onClick={this.toggle.bind(this, 'jewelry')}>Jewelry</div>
-                    <div onClick={this.toggle.bind(this, 'electronics')}>Electronics</div>
-                    <div onClick={this.toggle.bind(this, 'weapons')}>Weapons</div>
-                    <div onClick={this.toggle.bind(this, 'instruments')}>Musical Instruments</div>
-                    <div onClick={this.toggle.bind(this, 'art')}>Art</div>
-                  </DropdownMenu>
-                </Dropdown>
-                {/* <Dropdown
-                  >
-                  <Dropdown.Toggle variant="success" id="dropdown-basic" >
-                    Any
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Furniture</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Jewelry</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Electronics/Appliances</Dropdown.Item>
-                    <Dropdown.Item href="#/action-1">Weapons</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Musical Instruments</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Art</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown> */}
-
-                {/* <DropDown 
-                  options="Home Goods"
-                  value={this.state.category}
-                  onChange={this.handleInputChange}
-                  name="category"
-                  placeholder="Any"
-                /> */}
-                Name of object
-                <Input
-                  value={this.state.name}
-                  onChange={this.handleInputChange}
-                  name="name"
-                  placeholder="Name (required)"
-                />
-                Quantity
-                <Input
-                  value={this.state.quantity}
-                  onChange={this.handleInputChange}
-                  name="quantity"
-                  placeholder="Quantity (required)"
-                />
-                Scheduled
-                <CheckBox
-                    value={this.state.scheduled}
-                    onChange={this.checkBox}
-                    name="scheduled"
-                    label="Scheduled"
-                />
-                Original Purchase Date
-                <Input
-                  value={this.state.originalPurchaseDate}
-                  onChange={this.handleInputChange}
-                  name="originalPurchaseDate"
-                  placeholder="Original purchase/acquisition date"
-                />
-                Price of item
-                <Input
-                  value={this.state.price}
-                  onChange={this.handleInputChange}
-                  name="price"
-                  placeholder="Price"
-                />
-                Attachments
-                <Input
-                  value={this.state.attachments}
-                  onChange={this.handleInputChange}
-                  name="attachments"
-                  placeholder="attachments"
-                />
-                Note
-                <TextArea
-                  value={this.state.notes}
-                  onChange={this.handleInputChange}
-                  name="notes"
-                  placeholder="Notes (Optional)"
-                />
-                <FormBtn
-                  disabled={!(this.state.name && this.state.quantity)}
-                  onClick={this.handleFormSubmit}
-                >
-                  Submit New Item
-                </FormBtn>
-              </form>
-            </div>
-          </div>
-        </div>
+            <Chart />
+            <Modal />
         </ Row>
         <Row>
           <div className="col-lg-8"></div>
           <div className="col-lg-4">
-                <img src={logo} id="landingImg" />
+            <img src={logo} id="landingImg" />
           </div>
         </Row>
-      </ Container>
+      </ div>
       );
     }
   }

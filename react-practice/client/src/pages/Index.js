@@ -9,6 +9,8 @@ import { Input, TextArea, FormBtn, CheckBox } from "../components/Form";
 // import "./reset.css";
 import "./style.css";
 import logo from "../images/mochiLogo.png";
+import NewUser from "../components/NewUser";
+import RetUser from "../components/RetUser";
 // import bcrypt from "bcrypt";
 // const saltRounds = 10;
 // const plainTextPassword1 = "DFGh5546#%^___90";
@@ -47,88 +49,15 @@ class Index extends Component {
             <div id="indexBody">
             <div className="parallax"></div>
             <img src={logo} />
-            <Container>
+            <div className="container">
                 <Row>
-                    <div className="col-lg-5 loginRow">
-                        <div className="card">
-                            <div className="card-header">
-                                New User
-                            </div>
-                            <div className="card card-body">
-                                <form>
-                                    Email address
-                                    <Input 
-                                        value={this.state.newEmail}
-                                        onChange={this.handleInputChange}
-                                        name="newEmail"
-                                        placeholder="We'll never share your email with someone else."
-                                    />
-                                    Password
-                                    <Input
-                                        value={this.state.newPassword}
-                                        onChange={this.handleInputChange}
-                                        name="newPassword"
-                                        placeholder="Password"
-                                    />
-                                    Confirm Password
-                                    <Input
-                                        value={this.state.confirmPassword}
-                                        onChange={this.handleInputChange}
-                                        name="confirmPassword"
-                                        placeholder="Confirm Password"
-                                    />
-                                    <FormBtn
-                                        disabled={!(this.state.newEmail && this.state.newPassword && this.state.confirmPassword)}
-                                        onClick={this.handleNewSubmit}
-                                        >
-                                        Sign up for a new account!
-                                    </FormBtn>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    <NewUser />
                     <div className="col-lg-2"></div>
-                    <div className="col-lg-5 loginRow">
-                        <div className="card">
-                            <div className="card-header">
-                                Existing User
-                            </div>
-                            <div className="card-body">
-                                <form>
-                                    Email address
-                                    <Input 
-                                        value={this.state.existingEmail}
-                                        onChange={this.handleInputChange}
-                                        name="existingEmail"
-                                        placeholder="email@email.com"
-                                    />
-                                    Password
-                                    <Input
-                                        value={this.state.existingPassword}
-                                        onChange={this.handleInputChange}
-                                        name="existingPassword"
-                                        placeholder="Password"
-                                    />
-                                    <CheckBox
-                                        value={this.state.rememberMe}
-                                        onChange={this.checkBox}
-                                        name="rememberMe"
-                                        label="Remember Me"
-                                    />
-                                    <FormBtn
-                                        disabled={!(this.state.existingEmail && this.state.existingPassword)}
-                                        onClick={this.handleExistingSubmit}
-                                        >
-                                        Log-in
-                                    </FormBtn>
-                                </form>
-                            </div>
-                        </div>        
-                    </div>
+                    <RetUser />
                 </Row>
-            </Container>
+            </div>
             <div className="parallax" id="paraOne"></div>
-            <Container>
+            <div className="container">
                 <Row>
                     <div className="col-lg" id="iconRow">
                         <div className="card border-info mb-3">
@@ -161,7 +90,7 @@ class Index extends Component {
                         </div>
                     </div>
                 </Row>
-            </Container>
+            </div>
             <div className="parallax" id="paraTwo"></div>
         </div>
         )
