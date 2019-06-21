@@ -1,16 +1,16 @@
 import React, { Component } from "react";
+import Modal from '../components/Modal'
 // import DeleteBtn from "../components/DeleteBtn";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
-import { Input, CheckBox, TextArea, FormBtn } from "../components/Form";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownMenu from 'react-bootstrap/DropdownMenu';
 // import "./reset.css";
 import "./style.css";
 import logo from "../images/mochiLogo.png";
+import Chart from "../components/Chart";
+
 
 class Items extends Component {
 
@@ -65,6 +65,7 @@ class Items extends Component {
     });
   };
 
+
   toggle() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
@@ -116,13 +117,14 @@ class Items extends Component {
 
   render() {
     return (
-        <Container fluid>
+        <div className="container">
             <Row>
                 <div className="col-lg" id="landingTitle">
                     <h1 id="welcome">Welcome <span id="name"></span></h1>
                 </div>
             </ Row>
             <Row>
+<<<<<<< HEAD
                 <div className="col-lg-7"  id="landingRow">
                     <div className="card">
                         <h5 className="card-header">Cataloged Items</h5>
@@ -275,14 +277,18 @@ class Items extends Component {
             </div>
           </div>
         </div>
+=======
+            <Chart />
+            <Modal />
+>>>>>>> master
         </ Row>
         <Row>
           <div className="col-lg-8"></div>
           <div className="col-lg-4">
-                <img src={logo} id="landingImg" />
+            <img src={logo} id="landingImg" />
           </div>
         </Row>
-      </ Container>
+      </ div>
       );
     }
   }
