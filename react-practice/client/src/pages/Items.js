@@ -42,10 +42,10 @@ class Items extends Component {
         this.setState({ items: res.data, 
           name: "", 
           category: "Any",
-          quantity: "", 
+          quantity: 0, 
           scheduled: "", 
           originalPurchaseDate: "", 
-          price: "", 
+          price: 0, 
           attachments: "", 
           notes: "" })
       )
@@ -89,9 +89,12 @@ class Items extends Component {
 
 
   handleFormSubmit = event => {
-    console.log(this.state.name, this.state.quantity);
     event.preventDefault();
-    if (this.state.name && this.state.quantity) {
+    console.log(this.state.name, this.state.quantity);
+ 
+    // if (this.state.name && this.state.quantity) {
+       
+    if (true) {
       API.saveItem({
         name: this.state.name,
         quantity: this.state.quantity,
@@ -101,7 +104,9 @@ class Items extends Component {
         attachments: this.state.attachments,
         notes: this.state.notes
       })
-        .then(console.log("Success!"))
+        .then((data) => {
+          console.log("Success!", data);
+        })
         // .then(res => this.loadItems())
         .catch(err => console.log(err));
     }
@@ -169,7 +174,6 @@ class Items extends Component {
             <div className="card-body">
               <form>
                 Category
-
                 <Dropdown isopen={this.state.dropdownOpen} toggle={this.toggle}>
                 <span
                   onClick={this.toggle}
@@ -219,7 +223,7 @@ class Items extends Component {
                 />
                 Quantity
                 <Input
-                  value={this.state.quantity}
+                  number={this.state.quantity}
                   onChange={this.handleInputChange}
                   name="quantity"
                   placeholder="Quantity (required)"
