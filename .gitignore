@@ -13,8 +13,8 @@ node_modules
 /build
 
 #authentication
-test/auth/private.key
-test/auth/public.key
+react-practice/auth/private.key
+react-practice/auth/public.key
 
 # misc
 .DS_Store
