@@ -16,8 +16,8 @@ class Items extends Component {
 
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
-    this.select = this.select.bind(this);
+    // this.toggle = this.toggle.bind(this);
+    // this.select = this.select.bind(this);
     this.state = {
         items: [],
         category: "",
@@ -28,7 +28,7 @@ class Items extends Component {
         price: 0,
         attachments: "",
         notes: "",
-        dropdownOpen: false,
+        // dropdownOpen: false,
     };
   }
 
@@ -106,7 +106,9 @@ class Items extends Component {
       })
         .then((data) => {
           console.log("Success!", data);
-        })
+        }).then(
+          this.loadItems()
+        )
         // .then(res => this.loadItems())
         .catch(err => console.log(err));
     }
@@ -152,7 +154,7 @@ class Items extends Component {
                                         <td><button type="button" className="btn btn-danger">Delete</button></td>
                                     </tr>
                                     {this.state.items.map(item => (
-                                      <tr>
+                                      <tr key={item._id}>
                                         <th scope="col"></th>
                                         <td>{item.name}</td>
                                         <td>{item.price}</td>
@@ -174,7 +176,7 @@ class Items extends Component {
             <div className="card-body">
               <form>
                 Category
-                <Dropdown isopen={this.state.dropdownOpen} toggle={this.toggle}>
+                <Dropdown isopen={this.state.dropdownOpen}>
                 <span
                   onClick={this.toggle}
                   data-toggle="dropdown"
