@@ -5,14 +5,14 @@ class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+        
         };
     }
     render() {
         return(
             <Fragment>
                 <div className="col-lg-5">
-                    <div className="card">
+                    <div className="card" id="newUser">
                         <div className="card-header">
                             New User
                         </div>

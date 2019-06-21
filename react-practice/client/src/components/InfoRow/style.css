@@ -1,0 +1,26 @@
+#colRow{
+    margin-bottom: 35pt;
+    margin-top: 35pt;
+}
+
+.card-title{
+    text-align: center;
+}
+
+#iconRow{
+    box-shadow: 
+        12px 0 15px -4px rgba(31, 73, 125, 0.8), 
+        -12px 0 15px -4px rgba(31, 73, 125, 0.8);
+}
+
+#iconFire{
+    color: red;
+}
+
+#iconWater{
+    color: blue;
+}
+
+#iconStorm{
+    color: yellow;
+}
