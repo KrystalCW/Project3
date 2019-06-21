@@ -117,15 +117,15 @@ class Items extends Component {
 
   render() {
     return (
-        <div className="container">
-            <Row>
-                <div className="col-lg" id="landingTitle">
-                    <h1 id="welcome">Welcome <span id="name"></span></h1>
-                </div>
-            </ Row>
-            <Row>
-            <Chart />
-            <Modal />
+      <div className="container">
+        <Row>
+          <div className="col-lg" id="landingTitle">
+              <h1 id="welcome">Welcome <span id="name"></span></h1>
+          </div>
+        </ Row>
+        <Row>
+          <Chart />
+          <Modal />
         </ Row>
         <Row>
           <div className="col-lg-8"></div>
