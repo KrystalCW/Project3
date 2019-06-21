@@ -13,9 +13,8 @@ node_modules
 /build
 
 #authentication
-react-practice/auth/private.key
-react-practice/auth/public.key
-
+/react-practice/auth/private.key
+/react-practice/auth/private.key
 # misc
 .DS_Store
 .env.local
