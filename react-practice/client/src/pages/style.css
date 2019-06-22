@@ -45,6 +45,11 @@
         );
     box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset;
     padding-bottom: 25px;
+    
+}
+
+.container{
+    
 }
 
 #instructDiv{
@@ -59,8 +64,8 @@
 }
 
 img{
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -80,7 +85,7 @@ input {
     cursor: pointer;
 }
 
-.loginRow {
+#loginRow {
     padding-top: 35pt;
     padding-bottom: 35pt;
     border-right: solid 1pt gray;
