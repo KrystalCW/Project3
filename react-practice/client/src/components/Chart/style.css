@@ -1,3 +1,8 @@
-/* chartDiv{
-    overflow: scroll;
-} */
+#chartCard{
+    opacity: 0.9;
+}
+
+#chartDiv{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
