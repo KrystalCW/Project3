@@ -58,14 +58,7 @@ class Index extends Component {
                                     ))}
                                 </tbody>
                             </table>
-<<<<<<< HEAD
-                            {/* <button type="button" className="btn btn-outline-danger" id="delete">Delete Selected Item(s)</button> */}
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
-                                Update Entries
-                            </button>
-=======
-                            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update Entries</button>
->>>>>>> c9d17b71f9f550bdee5c3d2b479f078c1d1089ca
+                            <button type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Update Entries</button>
                         </div>
                     </div>
                 </div>
