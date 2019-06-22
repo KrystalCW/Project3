@@ -14,7 +14,7 @@ class Index extends Component {
         return (
             <Fragment>
                 <div className="col-lg-12" id="landingRow">
-                    <div className="card">
+                    <div className="card" id="chartCard">
                         <h5 className="card-header">Cataloged Items</h5>
                         <div className="card-body" id="chartDiv">
                             <table className="table">
@@ -32,7 +32,7 @@ class Index extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* <tr>
+                                    <tr>
                                         <th scope="row">1</th>
                                         <td>Leather Couch</td>
                                         <td>1</td>
@@ -40,9 +40,9 @@ class Index extends Component {
                                         <td>$1,100</td>
                                         <td><i className="fas fa-file"></i></td>
                                         <td>This is a great couch</td>
-                                        {/* <td><button type="button" className="btn btn-primary">Update</button></td>
-                                        <td><button type="button" className="btn btn-outline-danger">Delete</button></td> 
-                                    </tr> */}
+                                        <td><button type="button" className="btn btn-primary">Update</button></td>
+                                        <td><button type="button" className="btn btn-outline-danger">Delete</button></td>	                                        <td><button type="button" className="btn btn-outline-danger">Delete</button></td> 
+                                    </tr>
                                     {this.props.items.map(item => (
                                         <tr id="row_{items._id}">
                                             <th scope="col"></th>
@@ -52,8 +52,8 @@ class Index extends Component {
                                             <td>{item.price}</td>
                                             <td>{item.attachments}</td>
                                             <td>{item.note}</td>
-                                            <td><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update Entries</button></td>
-                                            <td><button type="button" className="btn btn-outline-danger" id="delete" onClick={this.props.clickDelete}>Delete Selected Item(s)</button></td>
+                                            <td><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update</button></td>
+                                            <td><button type="button" className="btn btn-outline-danger" id="delete" onClick={this.props.clickDelete}>Delete</button></td>
                                         </tr>
                                     ))}
                                 </tbody>
