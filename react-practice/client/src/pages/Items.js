@@ -29,8 +29,6 @@ class Items extends Component {
 
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
-    this.select = this.select.bind(this);
     this.state = {
         items: [],
         category: "",
@@ -41,7 +39,6 @@ class Items extends Component {
         price: 0,
         attachments: "",
         notes: "",
-        dropdownOpen: false,
     };
   }
 
