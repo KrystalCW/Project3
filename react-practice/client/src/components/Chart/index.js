@@ -48,15 +48,17 @@ class Index extends Component {
                                             <th scope="col"></th>
                                             <td>{item.name}</td>
                                             <td>{item.price}</td>
+                                            <td>{item.originalPurchaseDate}</td>
+                                            <td>{item.price}</td>
                                             <td>{item.attachments}</td>
+                                            <td>{item.note}</td>
+                                            <td><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update</button></td>
+                                            <td><button type="button" className="btn btn-outline-danger" id="delete" onClick={this.props.clickDelete}>Delete</button></td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
-                            <button type="button" className="btn btn-outline-danger" id="delete" onClick={this.props.clickDelete}>Delete Selected Item(s)</button>
-                            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                Update Entries
-                            </button>
+                            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update Entries</button>
                         </div>
                     </div>
                 </div>
