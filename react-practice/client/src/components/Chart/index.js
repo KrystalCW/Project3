@@ -7,6 +7,8 @@ class Index extends Component {
         this.state = {
             items: []
         };
+
+
     }
     render() {
         return (
@@ -41,8 +43,8 @@ class Index extends Component {
                                         <td><button type="button" className="btn btn-primary">Update</button></td>
                                         <td><button type="button" className="btn btn-outline-danger">Delete</button></td>
                                     </tr>
-                                    {this.state.items.map(item => (
-                                        <tr>
+                                    {this.props.items.map(item => (
+                                        <tr id="row_{items._id}">
                                             <th scope="col"></th>
                                             <td>{item.name}</td>
                                             <td>{item.price}</td>
@@ -51,8 +53,8 @@ class Index extends Component {
                                     ))}
                                 </tbody>
                             </table>
-                            <button type="button" className="btn btn-outline-danger" id="delete">Delete Selected Item(s)</button>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" className="btn btn-outline-danger" id="delete" onClick={this.props.clickDelete}>Delete Selected Item(s)</button>
+                            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                 Update Entries
                             </button>
                         </div>

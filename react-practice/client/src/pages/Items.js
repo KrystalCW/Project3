@@ -38,16 +38,19 @@ class Items extends Component {
 
   loadItems = () => {
     API.getItems()
-      .then(res =>
+      .then(res => {
+        console.dir(res.data);
         this.setState({ items: res.data, 
-          name: "", 
-          category: "Any",
-          quantity: 0, 
-          scheduled: "", 
-          originalPurchaseDate: "", 
-          price: 0, 
-          attachments: "", 
-          notes: "" })
+          // name: "", 
+          // category: "Any",
+          // quantity: 0, 
+          // scheduled: "", 
+          // originalPurchaseDate: "", 
+          // price: 0, 
+          // attachments: "", 
+          // notes: "" 
+        })
+        }
       )
       .catch(err => console.log(err));
   };
@@ -124,8 +127,13 @@ class Items extends Component {
           </div>
         </ Row>
         <Row>
-          <Chart />
-          <Modal />
+          <Chart 
+            items={this.state.items}
+            clickDelete={this.deleteItem}
+          />
+          <Modal 
+            onSubmit={this.handleFormSubmit}
+          />
         </ Row>
         <Row>
           <div className="col-lg-8"></div>
