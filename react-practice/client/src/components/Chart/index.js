@@ -41,7 +41,7 @@ class Index extends Component {
                                         <td><i className="fas fa-file"></i></td>
                                         <td>This is a great couch</td>
                                         <td><button type="button" className="btn btn-primary">Update</button></td>
-                                        <td><button type="button" className="btn btn-outline-danger">Delete</button></td>
+                                        <td><button type="button" className="btn btn-outline-danger">Delete</button></td>	                                        <td><button type="button" className="btn btn-outline-danger">Delete</button></td> 
                                     </tr>
                                     {this.props.items.map(item => (
                                         <tr id="row_{items._id}">

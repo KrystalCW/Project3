@@ -29,8 +29,6 @@ class Items extends Component {
 
   constructor(props) {
     super(props);
-    // this.toggle = this.toggle.bind(this);
-    // this.select = this.select.bind(this);
     this.state = {
         items: [],
         category: "",
@@ -41,7 +39,6 @@ class Items extends Component {
         price: 0,
         attachments: "",
         notes: "",
-        // dropdownOpen: false,
     };
   }
 
@@ -51,19 +48,16 @@ class Items extends Component {
 
   loadItems = () => {
     API.getItems()
-      .then(res => {
-        console.dir(res.data);
+      .then(res =>
         this.setState({ items: res.data, 
-          // name: "", 
-          // category: "Any",
-          // quantity: 0, 
-          // scheduled: "", 
-          // originalPurchaseDate: "", 
-          // price: 0, 
-          // attachments: "", 
-          // notes: "" 
-        })
-        }
+          name: "", 
+          category: "Any",
+          quantity: "", 
+          scheduled: "", 
+          originalPurchaseDate: "", 
+          price: "", 
+          attachments: "", 
+          notes: "" })
       )
       .catch(err => console.log(err));
   };
@@ -106,26 +100,19 @@ class Items extends Component {
 
 
   handleFormSubmit = event => {
-    event.preventDefault();
     console.log(this.state.name, this.state.quantity);
- 
-    // if (this.state.name && this.state.quantity) {
-       
-    if (true) {
+    event.preventDefault();
+    if (this.state.name && this.state.quantity) {
       API.saveItem({
-        name: this.state.name,
-        quantity: this.state.quantity,
-        scheduled: this.state.scheduled,
-        originalPurchaseDate: this.state.originalPurchaseDate,
-        price: this.state.price,
-        attachments: this.state.attachments,
-        notes: this.state.notes
+        item_name: this.state.name,
+        item_quantity: this.state.quantity,
+        item_scheduled: this.state.scheduled,
+        item_originalPurchaseDate: this.state.originalPurchaseDate,
+        item_price: this.state.price,
+        item_attachments: this.state.attachments,
+        item_notes: this.state.notes
       })
-        .then((data) => {
-          console.log("Success!", data);
-        }).then(
-          this.loadItems()
-        )
+        .then(console.log("Success!"))
         // .then(res => this.loadItems())
         .catch(err => console.log(err));
     }
@@ -133,18 +120,18 @@ class Items extends Component {
 
   render() {
     return (
-      <div className="container">
-        <Row>
-        <Welcome />
-        </ Row>
-        <Row>
-          <Chart 
-            items={this.state.items}
-            clickDelete={this.deleteItem}
-          />
-          <Modal 
-            onSubmit={this.handleFormSubmit}
-          />
+        <div className="container">
+            <Row>
+              <Welcome />
+            </ Row>
+            <Row>
+            <Chart 
+              items={this.state.items}
+              clickDelete={this.deleteItem}
+            />
+            <Modal
+              onSubmit={this.handleFormSubmit}
+            />
         </ Row>
         <Row>
           <div className="col-lg-8"></div>
