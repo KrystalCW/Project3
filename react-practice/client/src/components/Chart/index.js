@@ -14,7 +14,7 @@ class Index extends Component {
                 <div className="col-lg-12" id="landingRow">
                     <div className="card" id="chartCard">
                         <h5 className="card-header">Cataloged Items</h5>
-                        <div className="card-body">
+                        <div className="card-body" id="chartDiv">
                             <table className="table">
                                 <thead className="thead-light">
                                     <tr>
@@ -51,8 +51,8 @@ class Index extends Component {
                                     ))}
                                 </tbody>
                             </table>
-                            <button type="button" className="btn btn-outline-danger" id="delete">Delete Selected Item(s)</button>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            {/* <button type="button" className="btn btn-outline-danger" id="delete">Delete Selected Item(s)</button> */}
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
                                 Update Entries
                             </button>
                         </div>
