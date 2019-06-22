@@ -52,7 +52,7 @@ class Index extends Component {
         <div id="indexBody">
             <div className="parallax"></div>
             <img src={logo} />
-            <div className="container">
+            <div className="container" id="topCont">
                 <Row>
                     <NewUser /> 
                     <div className="col-lg-2"></div>
