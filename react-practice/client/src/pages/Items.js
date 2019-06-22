@@ -29,8 +29,8 @@ class Items extends Component {
 
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
-    this.select = this.select.bind(this);
+    // this.toggle = this.toggle.bind(this);
+    // this.select = this.select.bind(this);
     this.state = {
         items: [],
         category: "",
@@ -41,7 +41,7 @@ class Items extends Component {
         price: 0,
         attachments: "",
         notes: "",
-        dropdownOpen: false,
+        // dropdownOpen: false,
     };
   }
 
@@ -51,16 +51,19 @@ class Items extends Component {
 
   loadItems = () => {
     API.getItems()
-      .then(res =>
+      .then(res => {
+        console.dir(res.data);
         this.setState({ items: res.data, 
-          name: "", 
-          category: "Any",
-          quantity: "", 
-          scheduled: "", 
-          originalPurchaseDate: "", 
-          price: "", 
-          attachments: "", 
-          notes: "" })
+          // name: "", 
+          // category: "Any",
+          // quantity: 0, 
+          // scheduled: "", 
+          // originalPurchaseDate: "", 
+          // price: 0, 
+          // attachments: "", 
+          // notes: "" 
+        })
+        }
       )
       .catch(err => console.log(err));
   };
@@ -103,9 +106,12 @@ class Items extends Component {
 
 
   handleFormSubmit = event => {
-    console.log(this.state.name, this.state.quantity);
     event.preventDefault();
-    if (this.state.name && this.state.quantity) {
+    console.log(this.state.name, this.state.quantity);
+ 
+    // if (this.state.name && this.state.quantity) {
+       
+    if (true) {
       API.saveItem({
         name: this.state.name,
         quantity: this.state.quantity,
@@ -115,7 +121,11 @@ class Items extends Component {
         attachments: this.state.attachments,
         notes: this.state.notes
       })
-        .then(console.log("Success!"))
+        .then((data) => {
+          console.log("Success!", data);
+        }).then(
+          this.loadItems()
+        )
         // .then(res => this.loadItems())
         .catch(err => console.log(err));
     }
@@ -123,13 +133,18 @@ class Items extends Component {
 
   render() {
     return (
-        <div className="container">
-            <Row>
-              <Welcome />
-            </ Row>
-            <Row>
-            <Chart />
-            <Modal />
+      <div className="container">
+        <Row>
+        <Welcome />
+        </ Row>
+        <Row>
+          <Chart 
+            items={this.state.items}
+            clickDelete={this.deleteItem}
+          />
+          <Modal 
+            onSubmit={this.handleFormSubmit}
+          />
         </ Row>
         <Row>
           <div className="col-lg-8"></div>
