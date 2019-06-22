@@ -8,6 +8,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { Input, TextArea, FormBtn, CheckBox } from "../components/Form";
 // import "./reset.css";
 import "./style.css";
+
 import logo from "../images/mochiLogo.png";
 import NewUser from "../components/NewUser";
 import RetUser from "../components/RetUser";

@@ -7,6 +7,8 @@ class Index extends Component {
         this.state = {
             items: []
         };
+
+
     }
     render() {
         return (
@@ -41,20 +43,29 @@ class Index extends Component {
                                         <td><button type="button" className="btn btn-primary">Update</button></td>
                                         <td><button type="button" className="btn btn-outline-danger">Delete</button></td>
                                     </tr>
-                                    {this.state.items.map(item => (
-                                        <tr>
+                                    {this.props.items.map(item => (
+                                        <tr id="row_{items._id}">
                                             <th scope="col"></th>
                                             <td>{item.name}</td>
                                             <td>{item.price}</td>
+                                            <td>{item.originalPurchaseDate}</td>
+                                            <td>{item.price}</td>
                                             <td>{item.attachments}</td>
+                                            <td>{item.note}</td>
+                                            <td><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update</button></td>
+                                            <td><button type="button" className="btn btn-outline-danger" id="delete" onClick={this.props.clickDelete}>Delete</button></td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
+<<<<<<< HEAD
                             {/* <button type="button" className="btn btn-outline-danger" id="delete">Delete Selected Item(s)</button> */}
                             <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
                                 Update Entries
                             </button>
+=======
+                            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update Entries</button>
+>>>>>>> c9d17b71f9f550bdee5c3d2b479f078c1d1089ca
                         </div>
                     </div>
                 </div>
