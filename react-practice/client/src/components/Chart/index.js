@@ -14,7 +14,7 @@ class Index extends Component {
         return (
             <Fragment>
                 <div className="col-lg-12" id="landingRow">
-                    <div className="card">
+                    <div className="card" id="chartCard">
                         <h5 className="card-header">Cataloged Items</h5>
                         <div className="card-body">
                             <table className="table">

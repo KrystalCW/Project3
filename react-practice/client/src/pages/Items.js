@@ -10,6 +10,19 @@ import { Col, Row, Container } from "../components/Grid";
 import "./style.css";
 import logo from "../images/mochiLogo.png";
 import Chart from "../components/Chart";
+import Welcome from "../components/Welcome";
+import BackgroundSlider from 'react-background-slider';
+
+import image1 from "../images/itemBack/coffee.jpg";
+import image2 from "../images/itemBack/phone.jpg";
+import image3 from "../images/itemBack/couple.jpg";
+import image4 from "../images/itemBack/table.jpg";
+import image5 from "../images/itemBack/droplets.jpg";
+import image6 from "../images/itemBack/villa.jpg";
+import image7 from "../images/itemBack/guitar.jpg";
+import image8 from "../images/itemBack/wall.jpg";
+import image9 from "../images/itemBack/junk.jpg";
+import image10 from "../images/itemBack/modernTable.jpg";
 
 
 class Items extends Component {
@@ -122,9 +135,7 @@ class Items extends Component {
     return (
       <div className="container">
         <Row>
-          <div className="col-lg" id="landingTitle">
-              <h1 id="welcome">Welcome <span id="name"></span></h1>
-          </div>
+        <Welcome />
         </ Row>
         <Row>
           <Chart 
@@ -141,6 +152,11 @@ class Items extends Component {
             <img src={logo} id="landingImg" />
           </div>
         </Row>
+        <BackgroundSlider
+          images={[image1, image2, image3, image4, image5, image6, image7, image8, image9, image10]}
+          duration={8}
+          transition={2}
+        />
       </ div>
       );
     }

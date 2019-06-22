@@ -8,9 +8,12 @@ import { Col, Row, Container } from "../components/Grid";
 import { Input, TextArea, FormBtn, CheckBox } from "../components/Form";
 // import "./reset.css";
 import "./style.css";
+
 import logo from "../images/mochiLogo.png";
 import NewUser from "../components/NewUser";
 import RetUser from "../components/RetUser";
+import InfoRow from "../components/InfoRow";
+import Footer from "../components/Footer";
 // import bcrypt from "bcrypt";
 // const saltRounds = 10;
 // const plainTextPassword1 = "DFGh5546#%^___90";
@@ -46,12 +49,12 @@ class Index extends Component {
 
     render() {
         return (
-            <div id="indexBody">
+        <div id="indexBody">
             <div className="parallax"></div>
             <img src={logo} />
             <div className="container">
                 <Row>
-                    <NewUser />
+                    <NewUser /> 
                     <div className="col-lg-2"></div>
                     <RetUser />
                 </Row>
@@ -59,39 +62,15 @@ class Index extends Component {
             <div className="parallax" id="paraOne"></div>
             <div className="container">
                 <Row>
-                    <div className="col-lg" id="iconRow">
-                        <div className="card border-info mb-3">
-                            <div className="card-body text-info">
-                                <h2 className="card-title">Nature is Fierce</h2>
-                                <div className="row">
-                                    <div className="col-lg-3"></div>
-                                    <div className="col-lg-2">
-                                        <i className="fas fa-fire fa-7x"></i>
-                                    </div>
-                                    <div className="col-lg-2">
-                                        <i className="fas fa-water fa-7x"></i>
-                                    </div>
-                                    <div className="col-lg-2">
-                                        <i className="fas fa-poo-storm fa-7x"></i>
-                                    </div>
-                                    <div className="col-lg-3"></div>
-                                </div>
-                                <hr />
-                                <div className="row">
-                                    <div className="col-lg-2"></div>
-                                    <div className="col-lg-8">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec libero tellus. Aliquam id laoreet nulla. Suspendisse potenti. Sed auctor arcu pretium, posuere dolor vitae, malesuada augue. Sed vehicula placerat gravida. Sed sagittis erat non orci rutrum scelerisque. Quisque posuere maximus neque. Praesent urna nulla, volutpat ac magna aliquet, ornare ultricies turpis. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        </p>
-                                    </div>
-                                    <div className="col-lg-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <InfoRow />
                 </Row>
             </div>
             <div className="parallax" id="paraTwo"></div>
+            <div className="container">
+                <Row>
+                    <Footer />
+                </Row>
+            </div>
         </div>
         )
     }
