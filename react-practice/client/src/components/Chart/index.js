@@ -48,7 +48,7 @@ class Index extends Component {
                                             <th scope="col"></th>
                                             <td>{item.item_name}</td>
                                             <td>{item.item_quantity}</td>
-                                            <td>{item.dateObtained}</td>
+                                            <td>{item.item_dateObtained}</td>
                                             <td>{item.item_purchasePrice}</td>
                                             <td>{item.item_attachments}</td>
                                             <td>{item.item_notes}</td>

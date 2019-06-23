@@ -31,16 +31,10 @@ class Items extends Component {
     super(props);
     this.state = {
         items: [],
-        category: "",
-        name: "",
-        quantity: "",
-        scheduled: true,
-        originalPurchaseDate: "",
-        price: 0,
-        attachments: "",
-        notes: "",
         inputs: {}
     };
+
+    this.baseState = this
   }
 
   componentDidMount() {
@@ -48,17 +42,18 @@ class Items extends Component {
   }
 
   loadItems = () => {
+    this.setState(this.baseState);
     API.getItems()
       .then(res =>
-        this.setState({ items: res.data, 
-          name: "", 
-          category: "Any",
-          quantity: "", 
-          scheduled: "", 
-          originalPurchaseDate: "", 
-          price: "", 
-          attachments: "", 
-          notes: "" })
+        this.setState({ items: res.data })
+          // name: "", 
+          // category: "Any",
+          // quantity: "", 
+          // scheduled: "", 
+          // originalPurchaseDate: "", 
+          // price: "", 
+          // attachments: "", 
+          // notes: "" })
       )
       .catch(err => console.log(err));
   };
@@ -116,12 +111,13 @@ class Items extends Component {
         item_quantity: this.state.inputs["quantity"],
         // item_scheduled: this.state.scheduled,
         // item_originalPurchaseDate: this.state.originalPurchaseDate,
-        item_price: this.state.inputs["price"],
+        item_purchasePrice: this.state.inputs["price"],
         // item_attachments: this.state.attachments,
         item_notes: this.state.inputs["description"],
       })
-        .then(res => console.log(res))
-        // .then(res => this.loadItems())
+        // .then(res => console.log(res))
+        .then(res => this.loadItems())
+       
         .catch(err => console.log(err))
     }
   };

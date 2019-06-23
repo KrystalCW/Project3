@@ -35,7 +35,7 @@ class Index extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlSelect1">Item Category</label>
-                                        <select className="form-control" id="exampleFormControlSelect1" name="category" onChange={this.props.onChange}>
+                                        <select className="form-control" id="exampleFormControlSelect1" name="category" defaultValue={this.props.inputs} onChange={this.props.onChange}>
                                             <option>Please Select One</option>
                                             <option>Furniture</option>
                                             <option>Electronics</option>
@@ -55,11 +55,11 @@ class Index extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlFile1">Upload attachment</label>
-                                        <input type="file" name="attachment" className="form-control-file" id="exampleFormControlFile1" />
+                                        <input type="file" name="attachment" className="form-control-file" id="exampleFormControlFile1" defaultValue={this.props.inputs["attachments"]}/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlTextarea1">Description of item</label>
-                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" rows="3" onChange={this.props.onChange} />
+                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" rows="3" defaultValue={this.props.inputs["description"]} onChange={this.props.onChange} />
                                     </div>
                                 </form>
                             </div>
