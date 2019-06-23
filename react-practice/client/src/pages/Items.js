@@ -67,6 +67,9 @@ class Items extends Component {
 
   clearInputs = event => {
     console.log(event.target);
+    this.setState({
+      inputs: this.baseState.inputs
+    })
     // let inputs = { ...this.state.inputs };
     // this.setState({
     //   inputs: {
@@ -169,12 +172,10 @@ class Items extends Component {
             />
             <Modal
               inputs={this.state.inputs}
-              //name={this.state.name}
-              //quantity={this.state.quantity}
-              //price={this.state.price}
               onChange={this.handleInputChange}
               onSubmit={this.handleFormSubmit}
               clearInputs={this.clearInputs}
+
             />
         </ Row>
         <Row>

@@ -59,7 +59,7 @@ class Index extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlTextarea1">Description of item</label>
-                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" rows="3" defaultValue={this.props.inputs["description"]} onChange={this.props.onChange} />
+                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" rows="3" defaultValue={this.props.inputs["description"]} placeholder={ (this.props.inputs["description"]) ? this.props.inputs["description"] : "" }onChange={this.props.onChange} />
                                     </div>
                                 </form>
                             </div>
