@@ -10,7 +10,7 @@ const itemAttachmentSchema = new Schema({
 
 const itemSchema = new Schema({
   item_name: { type: String, required: true },
-  item_description: { type: String, required: true },
+  item_description: { type: String },
   item_notes: String,
   item_scheduled: { type: Date, default: Date.now },
   item_value: Number,

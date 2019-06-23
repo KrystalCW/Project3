@@ -27,11 +27,15 @@ class Index extends Component {
                                 <form>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Name of Item</label>
-                                        <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="Office Desk" />
+                                        <input type="text" name="itemName" className="form-control" id="exampleFormControlInput1" placeholder="Office Desk" defaultValue={this.props.inputs['myEmail']} onChange={this.props.onChange}/>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="exampleFormControlInput1">Quantity of Item</label>
+                                        <input type="number" name="quantity" className="form-control" id="exampleFormControlInput1" placeholder="0" defaultValue={this.props.inputs["quantity"]} onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlSelect1">Item Category</label>
-                                        <select className="form-control" id="exampleFormControlSelect1">
+                                        <select className="form-control" id="exampleFormControlSelect1" name="category" onChange={this.props.onChange}>
                                             <option>Please Select One</option>
                                             <option>Furniture</option>
                                             <option>Electronics</option>
@@ -47,21 +51,21 @@ class Index extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Price of item</label>
-                                        <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="$3,500" />
+                                        <input type="text" name="price" className="form-control" id="exampleFormControlInput1" placeholder="$3,500" defaultValue={this.props.inputs['myPrice']} onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlFile1">Upload attachment</label>
-                                        <input type="file" className="form-control-file" id="exampleFormControlFile1" />
+                                        <input type="file" name="attachment" className="form-control-file" id="exampleFormControlFile1" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlTextarea1">Description of item</label>
-                                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" />
+                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" rows="3" onChange={this.props.onChange} />
                                     </div>
                                 </form>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-warning" id="update" onSubmit={this.props.onSubmit}>Update</button>
+                                <button type="button" className="btn btn-warning" id="update" onClick={this.props.onSubmit}>Add New Item</button>
                             </div>
                         </div>
                     </div>
