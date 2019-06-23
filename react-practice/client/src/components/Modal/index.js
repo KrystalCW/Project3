@@ -20,14 +20,14 @@ class Index extends Component {
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Add Item</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">x</span>
+                                    <span aria-hidden="true" onChange={this.props.clearInputs}>x</span>
                                 </button>
                             </div>
                             <div className="modal-body">
                                 <form>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Name of Item</label>
-                                        <input type="text" name="itemName" className="form-control" id="exampleFormControlInput1" placeholder="Office Desk" defaultValue={this.props.inputs['myEmail']} onChange={this.props.onChange}/>
+                                        <input type="text" name="itemName" className="form-control" id="exampleFormControlInput1" defaultValue={this.props.inputs["itemName"]} placeholder={ (this.props.inputs['itemName']) ? this.props.inputs['itemName'] : "Office Desk" } onChange={this.props.onChange}/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Quantity of Item</label>
@@ -64,8 +64,8 @@ class Index extends Component {
                                 </form>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-warning" id="update" onClick={this.props.onSubmit}>Add New Item</button>
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal" >Close</button>
+                                <button type="button" className="btn btn-warning" id="update" onClick={this.props.onSubmit}>Add New Item</button>  
                             </div>
                         </div>
                     </div>

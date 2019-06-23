@@ -14,7 +14,7 @@ const itemSchema = new Schema({
   item_notes: String,
   item_scheduled: { type: Date, default: Date.now },
   item_value: Number,
-  item_purchasePrice: Number,
+  item_purchasePrice: String,
   item_dateObtained: {type: Date, default: Date.now },
   item_identificationNumber: String,
   item_idNumberType: String,

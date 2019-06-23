@@ -5,11 +5,31 @@ class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: []
+            items: [],
+            name: "",
+            quantity: 0,
+            dateObtained: 1/1/1900,
         };
-
-
     }
+
+
+    displayTableRows = props => {
+        var itemMap = props.map(item => (
+            <tr id="row_{items._id}" key={item._id}>
+                <th scope="col"></th>
+                <td>{item.item_name}</td>
+                <td>{item.item_quantity}</td>
+                <td>{item.item_dateObtained}</td>
+                <td>{item.item_purchasePrice}</td>
+                <td>{item.item_attachments}</td>
+                <td>{item.item_notes}</td>
+                <td><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" name={item._id} onClick={this.props.grabExisting} >Update</button></td>
+                <td><button type="button" className="btn btn-outline-danger" id="delete" onClick={this.props.clickDelete}>Delete</button></td>
+            </tr>
+        ))
+        return itemMap
+    }
+
     render() {
         return (
             <Fragment>
@@ -43,22 +63,25 @@ class Index extends Component {
                                         <td><button type="button" className="btn btn-primary">Update</button></td>
                                         <td><button type="button" className="btn btn-outline-danger">Delete</button></td> 
                                     </tr>
-                                    {this.props.items.map(item => (
-                                        <tr id="row_{items._id}" key={item._id}>
-                                            <th scope="col"></th>
-                                            <td>{item.item_name}</td>
-                                            <td>{item.item_quantity}</td>
-                                            <td>{item.item_dateObtained}</td>
-                                            <td>{item.item_purchasePrice}</td>
-                                            <td>{item.item_attachments}</td>
-                                            <td>{item.item_notes}</td>
-                                            <td><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update</button></td>
-                                            <td><button type="button" className="btn btn-outline-danger" id="delete" onClick={this.props.clickDelete}>Delete</button></td>
-                                        </tr>
-                                    ))}
+
+                                    {this.displayTableRows(this.props.items)}
+
+                                    {/* // {this.props.items.map(item => ( */}
+                                    {/* //     <tr id="row_{items._id}" key={item._id}>
+                                    //         <th scope="col"></th>
+                                    //         <td>{item.item_name}</td>
+                                    //         <td>{item.item_quantity}</td>
+                                    //         <td>{item.item_dateObtained}</td>
+                                    //         <td>{item.item_purchasePrice}</td>
+                                    //         <td>{item.item_attachments}</td>
+                                    //         <td>{item.item_notes}</td>
+                                    //         <td><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={this.props.grabExisting} >Update</button></td>
+                                    //         <td><button type="button" className="btn btn-outline-danger" id="delete" onClick={this.props.clickDelete}>Delete</button></td>
+                                    //     </tr>
+                                    // ))} */}
                                 </tbody>
                             </table>
-                            <button type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Add new item</button>
+                            <button type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" onClick={this.props.grabExisting}>Add new item</button>
                         </div>
                     </div>
                 </div>

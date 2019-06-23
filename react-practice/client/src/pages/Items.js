@@ -23,6 +23,7 @@ import image7 from "../images/itemBack/guitar.jpg";
 import image8 from "../images/itemBack/wall.jpg";
 import image9 from "../images/itemBack/junk.jpg";
 import image10 from "../images/itemBack/modernTable.jpg";
+import { timingSafeEqual } from "crypto";
 
 
 class Items extends Component {
@@ -64,8 +65,22 @@ class Items extends Component {
       .catch(err => console.log(err));
   };
 
+  clearInputs = event => {
+    console.log(event.target);
+    // let inputs = { ...this.state.inputs };
+    // this.setState({
+    //   inputs: {
+    //     "itemName": "",
+    //     "quantity": "",
+    //     "price": "",
+    //     "description": ""
+    //   }
+    // });
+    // conso0le.log(this.state.inputs)
+  }
+
   handleInputChange = event => {
-    
+    console.log(event.target);
     const { name, value } = event.target;
     console.log(name);
     let inputs = { ...this.state.inputs };
@@ -78,6 +93,24 @@ class Items extends Component {
     console.log(this.state.inputs)
   };
 
+  grabExisting = event => {
+    const { name } = event.target;
+    console.log(name);
+    API.getItem(name)
+    .then(res => this.setState({
+      inputs: {
+        "itemName": res.data.item_name,
+        "quantity": res.data.item_quantity,
+        "price": res.data.item_purchasePrice,
+        "description": res.data.item_notes
+      }
+    }))
+    .then(res => {
+      console.log(res);
+      console.log(this.state.inputs)
+    })
+    .catch(err => console.log(err))
+  }
 
   toggle() {
     this.setState({
@@ -117,7 +150,7 @@ class Items extends Component {
       })
         // .then(res => console.log(res))
         .then(res => this.loadItems())
-       
+        .then(this.setState({ inputs: {} }))
         .catch(err => console.log(err))
     }
   };
@@ -132,6 +165,7 @@ class Items extends Component {
             <Chart 
               items={this.state.items}
               clickDelete={this.deleteItem}
+              grabExisting={this.grabExisting}
             />
             <Modal
               inputs={this.state.inputs}
@@ -140,6 +174,7 @@ class Items extends Component {
               //price={this.state.price}
               onChange={this.handleInputChange}
               onSubmit={this.handleFormSubmit}
+              clearInputs={this.clearInputs}
             />
         </ Row>
         <Row>
