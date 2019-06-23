@@ -31,15 +31,10 @@ class Items extends Component {
     super(props);
     this.state = {
         items: [],
-        category: "",
-        name: "",
-        quantity: "",
-        scheduled: true,
-        originalPurchaseDate: "",
-        price: 0,
-        attachments: "",
-        notes: "",
+        inputs: {}
     };
+
+    this.baseState = this
   }
 
   componentDidMount() {
@@ -47,17 +42,18 @@ class Items extends Component {
   }
 
   loadItems = () => {
+    this.setState(this.baseState);
     API.getItems()
       .then(res =>
-        this.setState({ items: res.data, 
-          name: "", 
-          category: "Any",
-          quantity: "", 
-          scheduled: "", 
-          originalPurchaseDate: "", 
-          price: "", 
-          attachments: "", 
-          notes: "" })
+        this.setState({ items: res.data })
+          // name: "", 
+          // category: "Any",
+          // quantity: "", 
+          // scheduled: "", 
+          // originalPurchaseDate: "", 
+          // price: "", 
+          // attachments: "", 
+          // notes: "" })
       )
       .catch(err => console.log(err));
   };
@@ -69,10 +65,17 @@ class Items extends Component {
   };
 
   handleInputChange = event => {
+    
     const { name, value } = event.target;
+    console.log(name);
+    let inputs = { ...this.state.inputs };
+
+    inputs[name] = value;
+
     this.setState({
-      [name]: value
+      inputs: inputs
     });
+    console.log(this.state.inputs)
   };
 
 
@@ -100,21 +103,22 @@ class Items extends Component {
 
 
   handleFormSubmit = event => {
-    console.log(this.state.name, this.state.quantity);
+    console.log(this.state);
     event.preventDefault();
-    if (this.state.name && this.state.quantity) {
+    if (this.state.inputs["itemName"] && this.state.inputs["quantity"]) {
       API.saveItem({
-        item_name: this.state.name,
-        item_quantity: this.state.quantity,
-        item_scheduled: this.state.scheduled,
-        item_originalPurchaseDate: this.state.originalPurchaseDate,
-        item_price: this.state.price,
-        item_attachments: this.state.attachments,
-        item_notes: this.state.notes
+        item_name: this.state.inputs["itemName"],
+        item_quantity: this.state.inputs["quantity"],
+        // item_scheduled: this.state.scheduled,
+        // item_originalPurchaseDate: this.state.originalPurchaseDate,
+        item_purchasePrice: this.state.inputs["price"],
+        // item_attachments: this.state.attachments,
+        item_notes: this.state.inputs["description"],
       })
-        .then(console.log("Success!"))
-        // .then(res => this.loadItems())
-        .catch(err => console.log(err));
+        // .then(res => console.log(res))
+        .then(res => this.loadItems())
+       
+        .catch(err => console.log(err))
     }
   };
 
@@ -130,6 +134,11 @@ class Items extends Component {
               clickDelete={this.deleteItem}
             />
             <Modal
+              inputs={this.state.inputs}
+              //name={this.state.name}
+              //quantity={this.state.quantity}
+              //price={this.state.price}
+              onChange={this.handleInputChange}
               onSubmit={this.handleFormSubmit}
             />
         </ Row>
