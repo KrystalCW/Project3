@@ -31,7 +31,7 @@ class Index extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Quantity of Item</label>
-                                        <input type="number" name="quantity" className="form-control" id="exampleFormControlInput1" placeholder="0" defaultValue={this.props.inputs["quantity"]} onChange={this.props.onChange} />
+                                        <input type="number" name="quantity" className="form-control" id="exampleFormControlInput1" placeholder={ (this.props.inputs["quantity"]) ? this.props.inputs["quantity"] : 0 } defaultValue={this.props.inputs["quantity"]} onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlSelect1">Item Category</label>
@@ -51,7 +51,7 @@ class Index extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Price of item</label>
-                                        <input type="text" name="price" className="form-control" id="exampleFormControlInput1" placeholder="$3,500" defaultValue={this.props.inputs['myPrice']} onChange={this.props.onChange} />
+                                        <input type="text" name="price" className="form-control" id="exampleFormControlInput1" placeholder={ (this.props.inputs["price"]) ? this.props.inputs["price"] : 3500 } defaultValue={this.props.inputs['myPrice']} onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlFile1">Upload attachment</label>
