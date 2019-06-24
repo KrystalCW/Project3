@@ -13,10 +13,8 @@
 .parallax {
     /* The image used */
     background-image: url("../images/camera.jpg");
-  
     /* Set a specific height */
     min-height: 500px; 
-  
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -27,10 +25,8 @@
 #paraOne {
         /* The image used */
     background-image: url("../images/baby.jpg");
-
     /* Set a specific height */
     min-height: 500px; 
-    
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -40,10 +36,8 @@
 
 #paraTwo {
     background-image: url("../images/pug.jpg");
-
     /* Set a specific height */
     min-height: 500px; 
-    
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -60,7 +54,6 @@
     box-shadow: 
         12px 0 15px -4px rgba(31, 73, 125, 0.8), 
         -12px 0 15px -4px rgba(31, 73, 125, 0.8);
-    
 }
 
 
@@ -82,7 +75,6 @@ img{
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    
 }
 
 
