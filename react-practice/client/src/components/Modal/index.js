@@ -26,7 +26,7 @@ class Index extends Component {
                             <div className="modal-body">
                                 <form>
                                     <div className="form-group">
-                                        <label htmlFor="exampleFormControlInput1">Name of Item</label>
+                                        <label htmlFor="exampleFormControlInput1">Name of Item (required)</label>
                                         <input type="text" name="itemName" className="form-control" id="exampleFormControlInput1" defaultValue={this.props.inputs["itemName"]} placeholder={ (this.props.inputs['itemName'] === undefined) ? "Office Desk" : this.props.inputs['itemName'] } onChange={this.props.onChange}/>
                                     </div>
                                     <div className="form-group">
@@ -65,9 +65,10 @@ class Index extends Component {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal" >Close</button>
-                                {/* { (this.props.inputs)} */}
-                                
-                                <button type="button" className="btn btn-warning" id="update" onClick={this.props.onSubmit}>Add New Item</button>  
+                                { (this.props.inputs["itemName"] === undefined) ? 
+                                    <button type="button" className="btn btn-warning" id="update" onClick={this.props.onSubmit}>Add New Item</button> :
+                                    <button type="button" name={this.props.inputs["itemID"]} className="btn btn-warning" id="update" onClick={this.props.onUpdate}>Update Item</button>
+                                } 
                             </div>
                         </div>
                     </div>

@@ -14,8 +14,10 @@ export default {
     return axios.delete("http://localhost:3001/api/items/" + id);
   },
   // Saves a book to the database
-  saveItem: function(itemData) {
-    
+  saveItem: function(itemData) {  
     return axios.post("http://localhost:3001/api/items", itemData);
+  },
+  updateItem: function(id, itemData) {
+    return axios.put("http://localhost:3001/api/items/" + id + "/", itemData)
   }
 };

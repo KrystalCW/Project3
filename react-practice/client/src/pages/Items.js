@@ -92,6 +92,7 @@ class Items extends Component {
     API.getItem(name)
     .then(res => this.setState({
       inputs: {
+        "itemID": name,
         "itemName": res.data.item_name,
         "quantity": res.data.item_quantity,
         "price": res.data.item_purchasePrice,
@@ -127,6 +128,22 @@ class Items extends Component {
     console.log(this.state.scheduled);
   }
 
+  updateItem = event => {
+    const { name } = event.target;
+    console.log(name);
+    API.updateItem(name, {
+      item_name: this.state.inputs["itemName"],
+      item_quantity: this.state.inputs["quantity"],
+      // item_scheduled: this.state.scheduled,
+      // item_originalPurchaseDate: this.state.originalPurchaseDate,
+      item_purchasePrice: this.state.inputs["price"],
+      // item_attachments: this.state.attachments,
+      item_notes: this.state.inputs["description"],
+    })
+    .then(res => this.loadItems())
+    .then(this.setState({ inputs: {} }))
+    .catch(err => console.log(err))
+  }
 
   handleFormSubmit = event => {
     console.log(this.state);
@@ -165,7 +182,7 @@ class Items extends Component {
               onChange={this.handleInputChange}
               onSubmit={this.handleFormSubmit}
               clearInputs={this.clearInputs}
-
+              onUpdate={this.updateItem}
             />
         </ Row>
         <Row>
