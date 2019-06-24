@@ -27,11 +27,11 @@ class Index extends Component {
                                 <form>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Name of Item</label>
-                                        <input type="text" name="itemName" className="form-control" id="exampleFormControlInput1" defaultValue={this.props.inputs["itemName"]} placeholder={ (this.props.inputs['itemName']) ? this.props.inputs['itemName'] : "Office Desk" } onChange={this.props.onChange}/>
+                                        <input type="text" name="itemName" className="form-control" id="exampleFormControlInput1" defaultValue={this.props.inputs["itemName"]} placeholder={ (this.props.inputs['itemName'] === undefined) ? "Office Desk" : this.props.inputs['itemName'] } onChange={this.props.onChange}/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Quantity of Item</label>
-                                        <input type="number" name="quantity" className="form-control" id="exampleFormControlInput1" placeholder={ (this.props.inputs["quantity"]) ? this.props.inputs["quantity"] : 0 } defaultValue={this.props.inputs["quantity"]} onChange={this.props.onChange} />
+                                        <input type="number" name="quantity" className="form-control" id="exampleFormControlInput1" placeholder={ (this.props.inputs["quantity"] === undefined) ? 0 : this.props.inputs["quantity"] } defaultValue={this.props.inputs["quantity"]} onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlSelect1">Item Category</label>
@@ -51,20 +51,22 @@ class Index extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Price of item</label>
-                                        <input type="text" name="price" className="form-control" id="exampleFormControlInput1" placeholder={ (this.props.inputs["price"]) ? this.props.inputs["price"] : 3500 } defaultValue={this.props.inputs['myPrice']} onChange={this.props.onChange} />
+                                        <input type="text" name="price" className="form-control" id="exampleFormControlInput1" placeholder={ (this.props.inputs["price"] === undefined) ? 3500 : this.props.inputs["price"] } defaultValue={this.props.inputs['price']} onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlFile1">Upload attachment</label>
-                                        <input type="file" name="attachment" className="form-control-file" id="exampleFormControlFile1" defaultValue={this.props.inputs["attachments"]}/>
+                                        <input type="file" name="attachment" className="form-control-file" id="exampleFormControlFile1" defaultValue={this.props.inputs["attachment"]}/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlTextarea1">Description of item</label>
-                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" rows="3" defaultValue={this.props.inputs["description"]} placeholder={ (this.props.inputs["description"]) ? this.props.inputs["description"] : "" }onChange={this.props.onChange} />
+                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" rows="3" defaultValue={this.props.inputs["description"]} placeholder={ (this.props.inputs["description"] === undefined ) ? "" : this.props.inputs["description"] }onChange={this.props.onChange} />
                                     </div>
                                 </form>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal" >Close</button>
+                                {/* { (this.props.inputs)} */}
+                                
                                 <button type="button" className="btn btn-warning" id="update" onClick={this.props.onSubmit}>Add New Item</button>  
                             </div>
                         </div>

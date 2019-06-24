@@ -70,16 +70,6 @@ class Items extends Component {
     this.setState({
       inputs: this.baseState.inputs
     })
-    // let inputs = { ...this.state.inputs };
-    // this.setState({
-    //   inputs: {
-    //     "itemName": "",
-    //     "quantity": "",
-    //     "price": "",
-    //     "description": ""
-    //   }
-    // });
-    // conso0le.log(this.state.inputs)
   }
 
   handleInputChange = event => {
