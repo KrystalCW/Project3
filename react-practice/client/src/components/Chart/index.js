@@ -46,15 +46,6 @@ class Index extends Component {
                                     {this.props.items.map(item => (
                                         <tr id="row_{items._id}" key={item._id}>
                                             <th scope="col"></th>
-<<<<<<< HEAD
-                                            <td>{item.name}</td>
-                                            <td>{item.price}</td>
-                                            <td>{item.originalPurchaseDate}</td>
-                                            <td>{item.price}</td>
-                                            <td>{item.attachments}</td>
-                                            <td>{item.note}</td>
-                                            <td><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Update</button></td>
-=======
                                             <td>{item.item_name}</td>
                                             <td>{item.item_quantity}</td>
                                             <td>{item.item_dateObtained}</td>
@@ -62,7 +53,6 @@ class Index extends Component {
                                             <td>{item.item_attachments}</td>
                                             <td>{item.item_notes}</td>
                                             <td><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update</button></td>
->>>>>>> master
                                             <td><button type="button" className="btn btn-outline-danger" id="delete" onClick={this.props.clickDelete}>Delete</button></td>
                                         </tr>
                                     ))}
