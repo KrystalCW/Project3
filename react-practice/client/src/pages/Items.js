@@ -47,14 +47,6 @@ class Items extends Component {
     API.getItems()
       .then(res =>
         this.setState({ items: res.data })
-          // name: "", 
-          // category: "Any",
-          // quantity: "", 
-          // scheduled: "", 
-          // originalPurchaseDate: "", 
-          // price: "", 
-          // attachments: "", 
-          // notes: "" })
       )
       .catch(err => console.log(err));
   };
@@ -66,9 +58,15 @@ class Items extends Component {
   };
 
   clearInputs = event => {
-    // console.log(event.target);
     this.setState({
-      inputs: this.baseState.inputs
+      inputs: {
+        "itemID": "new",
+        "itemName": undefined,
+        "category": undefined,
+        "quantity": undefined,
+        "price": undefined,
+        "description": undefined
+      }
     })
   }
 
@@ -90,16 +88,7 @@ class Items extends Component {
     const { name } = event.target;
     console.log(name);
     if ( name === "new") {
-      this.setState({
-        inputs: {
-          "itemID": "new",
-          "itemName": undefined,
-          "category": undefined,
-          "quantity": undefined,
-          "price": undefined,
-          "description": undefined
-        }
-      })
+    this.clearInputs()
     } else {
       API.getItem(name)
       .then(res => this.setState({
@@ -120,27 +109,27 @@ class Items extends Component {
     }
   }
 
-  toggle() {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
-  }
+  // toggle() {
+  //   this.setState({
+  //     dropdownOpen: !this.state.dropdownOpen
+  //   });
+  // }
 
-  select(event) {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen,
-      category: event.target.innerText
-    });
-  }
+  // select(event) {
+  //   this.setState({
+  //     dropdownOpen: !this.state.dropdownOpen,
+  //     category: event.target.innerText
+  //   });
+  // }
 
-  checkBox = event => {
-    if (this.state.scheduled === false) {
-        this.setState({ scheduled: true })
-    } else {
-        this.setState({ scheduled: false })
-    }
-    console.log(this.state.scheduled);
-  }
+  // checkBox = event => {
+  //   if (this.state.scheduled === false) {
+  //       this.setState({ scheduled: true })
+  //   } else {
+  //       this.setState({ scheduled: false })
+  //   }
+  //   console.log(this.state.scheduled);
+  // }
 
   updateItem = event => {
     const { name } = event.target;
@@ -156,7 +145,7 @@ class Items extends Component {
       item_notes: this.state.inputs["description"],
     })
     .then(res => this.loadItems())
-    .then(this.setState({ inputs: {} }))
+    .then(this.clearInputs())
     .catch(err => console.log(err))
   }
 
