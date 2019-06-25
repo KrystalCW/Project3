@@ -1,0 +1,11 @@
+#landingTitle{
+    background: linear-gradient(
+        to left, rgb(138, 187, 219), rgb(226, 241, 220) 25%, rgb(226, 241, 220)  75%, rgb(138, 187, 219) 100%
+        );
+    box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset;
+    box-shadow:     
+        12px 0 15px -4px rgba(31, 73, 125, 0.8), 
+        -12px 0 15px -4px rgba(31, 73, 125, 0.8);
+    opacity: 0.7;
+    
+}

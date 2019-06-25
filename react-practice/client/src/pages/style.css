@@ -1,10 +1,20 @@
+@font-face{
+    font-family: "Mochi Font";
+    src: url(../images/xenodemon.ttf) format("truetype");
+}
+
+@font-face{
+    font-family: "Majoram Sans Italic";
+    src: url(../images/MajoramSansItalic.otf) format("truetype");
+}
+
+
+
 .parallax {
     /* The image used */
     background-image: url("../images/camera.jpg");
-  
     /* Set a specific height */
     min-height: 500px; 
-  
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -15,10 +25,8 @@
 #paraOne {
         /* The image used */
     background-image: url("../images/baby.jpg");
-
     /* Set a specific height */
     min-height: 500px; 
-    
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -28,10 +36,8 @@
 
 #paraTwo {
     background-image: url("../images/pug.jpg");
-
     /* Set a specific height */
     min-height: 500px; 
-    
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -45,7 +51,11 @@
         );
     box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset;
     padding-bottom: 25px;
+    box-shadow: 
+        12px 0 15px -4px rgba(31, 73, 125, 0.8), 
+        -12px 0 15px -4px rgba(31, 73, 125, 0.8);
 }
+
 
 #instructDiv{
     padding-top: 35pt;
@@ -59,13 +69,12 @@
 }
 
 img{
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    
 }
 
 
@@ -80,7 +89,7 @@ input {
     cursor: pointer;
 }
 
-.loginRow {
+#loginRow {
     padding-top: 35pt;
     padding-bottom: 35pt;
     border-right: solid 1pt gray;
