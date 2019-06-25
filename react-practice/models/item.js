@@ -13,7 +13,7 @@ const itemSchema = new Schema({
   item_description: { type: String },
   item_notes: String,
   item_scheduled: Boolean,
-  item_value: Number,
+  item_value: String,
   item_purchasePrice: String,
   item_dateObtained: {type: Date, default: Date.now },
   item_identificationNumber: String,
