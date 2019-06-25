@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import Modal from '../components/Modal'
+import Modal from '../components/Modal';
+import ModalTwo from "../components/ModalTwo";
+
+
 // import DeleteBtn from "../components/DeleteBtn";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
@@ -184,6 +187,7 @@ class Items extends Component {
               clickDelete={this.deleteItem}
               grabExisting={this.grabExisting}
             />
+            <ModalTwo />
             <Modal
               inputs={this.state.inputs}
               onChange={this.handleInputChange}
