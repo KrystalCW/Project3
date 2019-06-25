@@ -26,6 +26,7 @@ import image7 from "../images/itemBack/guitar.jpg";
 import image8 from "../images/itemBack/wall.jpg";
 import image9 from "../images/itemBack/junk.jpg";
 import image10 from "../images/itemBack/modernTable.jpg";
+import { timingSafeEqual } from "crypto";
 
 
 class Items extends Component {
@@ -48,16 +49,9 @@ class Items extends Component {
     this.setState(this.baseState);
     API.getItems()
       .then(res =>
-        this.setState({ items: res.data })
-          // name: "", 
-          // category: "Any",
-          // quantity: "", 
-          // scheduled: "", 
-          // originalPurchaseDate: "", 
-          // price: "", 
-          // attachments: "", 
-          // notes: "" })
+        this.setState({ items: res.data }),
       )
+      .then(console.log(this.state.items))
       .catch(err => console.log(err));
   };
 
@@ -67,8 +61,21 @@ class Items extends Component {
       .catch(err => console.log(err));
   };
 
+  clearInputs = event => {
+    this.setState({
+      inputs: {
+        "itemID": "new",
+        "itemName": undefined,
+        "category": undefined,
+        "quantity": undefined,
+        "price": undefined,
+        "description": undefined
+      }
+    })
+  }
+
   handleInputChange = event => {
-    
+    console.log(event.target);
     const { name, value } = event.target;
     console.log(name);
     let inputs = { ...this.state.inputs };
@@ -81,29 +88,71 @@ class Items extends Component {
     console.log(this.state.inputs)
   };
 
-
-  toggle() {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
-  }
-
-  select(event) {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen,
-      category: event.target.innerText
-    });
-  }
-
-  checkBox = event => {
-    if (this.state.scheduled === false) {
-        this.setState({ scheduled: true })
+  grabExisting = event => {
+    const { name } = event.target;
+    console.log(name);
+    if ( name === "new") {
+    this.clearInputs()
     } else {
-        this.setState({ scheduled: false })
+      API.getItem(name)
+      .then(res => this.setState({
+        inputs: {
+          "itemID": name,
+          "itemName": res.data.item_name,
+          "category": res.data.item_categoryName,
+          "quantity": res.data.item_quantity,
+          "price": res.data.item_purchasePrice,
+          "attachment": res.data.item_attachments,
+          "description": res.data.item_notes
+        }
+      }))
+      .then(res => {
+        console.log(res);
+        console.log(this.state.inputs)
+      })
+      .catch(err => console.log(err))
     }
-    console.log(this.state.scheduled);
   }
 
+  // toggle() {
+  //   this.setState({
+  //     dropdownOpen: !this.state.dropdownOpen
+  //   });
+  // }
+
+  // select(event) {
+  //   this.setState({
+  //     dropdownOpen: !this.state.dropdownOpen,
+  //     category: event.target.innerText
+  //   });
+  // }
+
+  // checkBox = event => {
+  //   if (this.state.scheduled === false) {
+  //       this.setState({ scheduled: true })
+  //   } else {
+  //       this.setState({ scheduled: false })
+  //   }
+  //   console.log(this.state.scheduled);
+  // }
+
+  updateItem = event => {
+    const { name } = event.target;
+    console.log(name);
+    API.updateItem(name, {
+      item_name: this.state.inputs["itemName"],
+      item_quantity: this.state.inputs["quantity"],
+      item_categoryName: this.state.inputs["category"],
+      // item_scheduled: this.state.scheduled,
+      // item_originalPurchaseDate: this.state.originalPurchaseDate,
+      item_purchasePrice: this.state.inputs["price"],
+      item_attachments: this.state.inputs["attachment"],
+      item_notes: this.state.inputs["description"],
+    })
+    .then(res => this.loadItems())
+    .then(this.clearInputs())
+    .catch(err => console.log(err))
+  }
 
   handleFormSubmit = event => {
     console.log(this.state);
@@ -112,15 +161,16 @@ class Items extends Component {
       API.saveItem({
         item_name: this.state.inputs["itemName"],
         item_quantity: this.state.inputs["quantity"],
+        item_categoryName: this.state.inputs["category"],
         // item_scheduled: this.state.scheduled,
         // item_originalPurchaseDate: this.state.originalPurchaseDate,
         item_purchasePrice: this.state.inputs["price"],
-        // item_attachments: this.state.attachments,
+        item_attachments: this.state.inputs["attachment"],
         item_notes: this.state.inputs["description"],
       })
         // .then(res => console.log(res))
         .then(res => this.loadItems())
-       
+        .then(this.setState({ inputs: {} }))
         .catch(err => console.log(err))
     }
   };
@@ -135,15 +185,15 @@ class Items extends Component {
             <Chart 
               items={this.state.items}
               clickDelete={this.deleteItem}
+              grabExisting={this.grabExisting}
             />
             <ModalTwo />
             <Modal
               inputs={this.state.inputs}
-              //name={this.state.name}
-              //quantity={this.state.quantity}
-              //price={this.state.price}
               onChange={this.handleInputChange}
               onSubmit={this.handleFormSubmit}
+              clearInputs={this.clearInputs}
+              onUpdate={this.updateItem}
             />
         </ Row>
         <Row>

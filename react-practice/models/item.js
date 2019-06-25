@@ -23,7 +23,8 @@ const itemSchema = new Schema({
   item_locationDescription: String,
   item_categoryName: String,
   item_categoryDescription: String,
-  item_attachments: [itemAttachmentSchema]
+  // item_attachments: [itemAttachmentSchema]
+  item_attachments: String,
 });
 
 const Item = mongoose.model("Item", itemSchema);
