@@ -23,7 +23,7 @@ import image7 from "../images/itemBack/guitar.jpg";
 import image8 from "../images/itemBack/wall.jpg";
 import image9 from "../images/itemBack/junk.jpg";
 import image10 from "../images/itemBack/modernTable.jpg";
-import { timingSafeEqual } from "crypto";
+// import { timingSafeEqual } from "crypto";
 
 
 class Items extends Component {
