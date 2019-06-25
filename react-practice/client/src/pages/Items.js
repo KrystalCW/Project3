@@ -66,7 +66,7 @@ class Items extends Component {
   };
 
   clearInputs = event => {
-    console.log(event.target);
+    // console.log(event.target);
     this.setState({
       inputs: this.baseState.inputs
     })
@@ -89,21 +89,35 @@ class Items extends Component {
   grabExisting = event => {
     const { name } = event.target;
     console.log(name);
-    API.getItem(name)
-    .then(res => this.setState({
-      inputs: {
-        "itemID": name,
-        "itemName": res.data.item_name,
-        "quantity": res.data.item_quantity,
-        "price": res.data.item_purchasePrice,
-        "description": res.data.item_notes
-      }
-    }))
-    .then(res => {
-      console.log(res);
-      console.log(this.state.inputs)
-    })
-    .catch(err => console.log(err))
+    if ( name === "new") {
+      this.setState({
+        inputs: {
+          "itemID": "new",
+          "itemName": undefined,
+          "category": undefined,
+          "quantity": undefined,
+          "price": undefined,
+          "description": undefined
+        }
+      })
+    } else {
+      API.getItem(name)
+      .then(res => this.setState({
+        inputs: {
+          "itemID": name,
+          "itemName": res.data.item_name,
+          "category": res.data.item_categoryName,
+          "quantity": res.data.item_quantity,
+          "price": res.data.item_purchasePrice,
+          "description": res.data.item_notes
+        }
+      }))
+      .then(res => {
+        console.log(res);
+        console.log(this.state.inputs)
+      })
+      .catch(err => console.log(err))
+    }
   }
 
   toggle() {
@@ -134,6 +148,7 @@ class Items extends Component {
     API.updateItem(name, {
       item_name: this.state.inputs["itemName"],
       item_quantity: this.state.inputs["quantity"],
+      item_categoryName: this.state.inputs["category"],
       // item_scheduled: this.state.scheduled,
       // item_originalPurchaseDate: this.state.originalPurchaseDate,
       item_purchasePrice: this.state.inputs["price"],
@@ -152,6 +167,7 @@ class Items extends Component {
       API.saveItem({
         item_name: this.state.inputs["itemName"],
         item_quantity: this.state.inputs["quantity"],
+        item_categoryName: this.state.inputs["category"],
         // item_scheduled: this.state.scheduled,
         // item_originalPurchaseDate: this.state.originalPurchaseDate,
         item_purchasePrice: this.state.inputs["price"],

@@ -19,7 +19,7 @@ class Index extends Component {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Add Item</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close" >
                                     <span aria-hidden="true" onChange={this.props.clearInputs}>x</span>
                                 </button>
                             </div>
@@ -35,7 +35,7 @@ class Index extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlSelect1">Item Category</label>
-                                        <select className="form-control" id="exampleFormControlSelect1" name="category" defaultValue={this.props.inputs} onChange={this.props.onChange}>
+                                        <select className="form-control" id="exampleFormControlSelect1" name="category" defaultValue={this.props.inputs["category"]} placeholder={ (this.props.inputs["category"] === undefined) ? "Please Select One" : this.props.inputs["category"] } defaultValue={this.props.inputs["quantity"]} onChange={this.props.onChange}>
                                             <option>Please Select One</option>
                                             <option>Furniture</option>
                                             <option>Electronics</option>
@@ -64,11 +64,11 @@ class Index extends Component {
                                 </form>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal" >Close</button>
-                                { (this.props.inputs["itemName"] === undefined) ? 
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal" onChange={this.props.clearInputs}>Close</button>
+                                { (this.props.inputs["itemID"] === "new") ? 
                                     <button type="button" className="btn btn-warning" id="update" onClick={this.props.onSubmit}>Add New Item</button> :
                                     <button type="button" name={this.props.inputs["itemID"]} className="btn btn-warning" id="update" onClick={this.props.onUpdate}>Update Item</button>
-                                } 
+                                }                       
                             </div>
                         </div>
                     </div>
