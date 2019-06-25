@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import Modal from '../components/Modal'
+import Modal from '../components/Modal';
+import ModalTwo from "../components/ModalTwo";
+
+
 // import DeleteBtn from "../components/DeleteBtn";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
@@ -133,6 +136,7 @@ class Items extends Component {
               items={this.state.items}
               clickDelete={this.deleteItem}
             />
+            <ModalTwo />
             <Modal
               inputs={this.state.inputs}
               //name={this.state.name}
