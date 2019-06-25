@@ -63,7 +63,6 @@ class Index extends Component {
                                         <td><button type="button" className="btn btn-primary">Update</button></td>
                                         <td><button type="button" className="btn btn-outline-danger">Delete</button></td> 
                                     </tr>
-
                                     {this.displayTableRows(this.props.items)}
                                 </tbody>
                             </table>
