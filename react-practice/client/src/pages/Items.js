@@ -46,8 +46,9 @@ class Items extends Component {
     this.setState(this.baseState);
     API.getItems()
       .then(res =>
-        this.setState({ items: res.data })
+        this.setState({ items: res.data }),
       )
+      .then(console.log(this.state.items))
       .catch(err => console.log(err));
   };
 
@@ -98,6 +99,7 @@ class Items extends Component {
           "category": res.data.item_categoryName,
           "quantity": res.data.item_quantity,
           "price": res.data.item_purchasePrice,
+          "attachment": res.data.item_attachments,
           "description": res.data.item_notes
         }
       }))
@@ -141,7 +143,7 @@ class Items extends Component {
       // item_scheduled: this.state.scheduled,
       // item_originalPurchaseDate: this.state.originalPurchaseDate,
       item_purchasePrice: this.state.inputs["price"],
-      // item_attachments: this.state.attachments,
+      item_attachments: this.state.inputs["attachment"],
       item_notes: this.state.inputs["description"],
     })
     .then(res => this.loadItems())
@@ -160,7 +162,7 @@ class Items extends Component {
         // item_scheduled: this.state.scheduled,
         // item_originalPurchaseDate: this.state.originalPurchaseDate,
         item_purchasePrice: this.state.inputs["price"],
-        // item_attachments: this.state.attachments,
+        item_attachments: this.state.inputs["attachment"],
         item_notes: this.state.inputs["description"],
       })
         // .then(res => console.log(res))
