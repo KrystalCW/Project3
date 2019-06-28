@@ -36,8 +36,8 @@ class Index extends Component {
                 <div className="col-lg-12" id="landingRow">
                     <div className="card" id="chartCard">
                         <h5 className="card-header">Cataloged Items</h5>
-                        <div className="card-body" id="chartDiv">
-                            <table className="table">
+                        <div className="card-body" >
+                            <table className="table"id="chartDiv">
                                 <thead className="thead-light">
                                     <tr>
                                         <th scope="col">#</th>
@@ -58,7 +58,7 @@ class Index extends Component {
                                         <td>1</td>
                                         <td>Furniture</td>
                                         <td>$1,100</td>
-                                        <td><i className="fas fa-file"></i></td>
+                                        <td><button className="btn" data-toggle="modal" data-target=".bd-example-modal-sm"><i className="fas fa-file"></i></button></td>
                                         <td>This is a great couch</td>
                                         <td><button type="button" className="btn btn-primary">Update</button></td>
                                         <td><button type="button" className="btn btn-outline-danger">Delete</button></td> 
