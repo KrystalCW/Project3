@@ -2,6 +2,15 @@ import React, { Fragment, Component} from "react";
 import logo from "../../images/mochiLogo.png";
 
 class Index extends Component {
+
+    constructor(props){
+        super(props);
+        this.stare = {
+            items: []
+        };
+    }
+
+
     render() {
         return(
             <Fragment>
