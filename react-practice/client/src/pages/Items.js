@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Modal from '../components/Modal';
-import ModalTwo from "../components/ModalTwo";
+// import ModalTwo from "../components/ModalTwo";
 
 
 // import DeleteBtn from "../components/DeleteBtn";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 // import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+import { Row } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
 // import "./reset.css";
 import "./style.css";
@@ -55,13 +55,8 @@ class Items extends Component {
       .catch(err => console.log(err));
   };
 
-  deleteItem = id => {
-    API.deleteItem(id)
-      .then(res => this.loadItems())
-      .catch(err => console.log(err));
-  };
-
-  clearInputs = event => {
+  clearInputs = () => {
+    console.log('clearInputs');
     this.setState({
       inputs: {
         "itemID": "new",
@@ -71,7 +66,8 @@ class Items extends Component {
         "price": undefined,
         "description": undefined
       }
-    })
+    });
+    console.log(this.state.inputs)
   }
 
   handleInputChange = event => {
@@ -88,53 +84,44 @@ class Items extends Component {
     console.log(this.state.inputs)
   };
 
+  
+  deleteItem = event => {
+    const { name } = event.target;
+    console.log(name);
+    API.deleteItem(name)
+      .then(res => {
+        this.clearInputs();
+        this.loadItems()
+      })
+      .catch(err => console.log(err));
+  };
+
   grabExisting = event => {
     const { name } = event.target;
     console.log(name);
     if ( name === "new") {
-    this.clearInputs()
+      this.clearInputs();
     } else {
+      console.log(this.state.inputs);
+      console.log('updating..')
       API.getItem(name)
-      .then(res => this.setState({
-        inputs: {
-          "itemID": name,
-          "itemName": res.data.item_name,
-          "category": res.data.item_categoryName,
-          "quantity": res.data.item_quantity,
-          "price": res.data.item_purchasePrice,
-          "attachment": res.data.item_attachments,
-          "description": res.data.item_notes
-        }
-      }))
       .then(res => {
-        console.log(res);
+        this.setState({
+          inputs: {
+            "itemID": name,
+            "itemName": res.data.item_name,
+            "category": res.data.item_categoryName,
+            "quantity": res.data.item_quantity,
+            "price": res.data.item_purchasePrice,
+            "attachment": res.data.item_attachments,
+            "description": res.data.item_notes
+          }
+        });
         console.log(this.state.inputs)
       })
       .catch(err => console.log(err))
     }
   }
-
-  // toggle() {
-  //   this.setState({
-  //     dropdownOpen: !this.state.dropdownOpen
-  //   });
-  // }
-
-  // select(event) {
-  //   this.setState({
-  //     dropdownOpen: !this.state.dropdownOpen,
-  //     category: event.target.innerText
-  //   });
-  // }
-
-  // checkBox = event => {
-  //   if (this.state.scheduled === false) {
-  //       this.setState({ scheduled: true })
-  //   } else {
-  //       this.setState({ scheduled: false })
-  //   }
-  //   console.log(this.state.scheduled);
-  // }
 
   updateItem = event => {
     const { name } = event.target;
@@ -170,7 +157,7 @@ class Items extends Component {
       })
         // .then(res => console.log(res))
         .then(res => this.loadItems())
-        .then(this.setState({ inputs: {} }))
+        .then(this.clearInputs())
         .catch(err => console.log(err))
     }
   };
@@ -187,7 +174,7 @@ class Items extends Component {
               clickDelete={this.deleteItem}
               grabExisting={this.grabExisting}
             />
-            <ModalTwo />
+            {/* <ModalTwo /> */}
             <Modal
               inputs={this.state.inputs}
               onChange={this.handleInputChange}

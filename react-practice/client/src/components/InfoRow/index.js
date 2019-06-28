@@ -27,7 +27,8 @@ class Index extends Component {
                                 <div className="col-lg-2"></div>
                                 <div className="col-lg-8">
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec libero tellus. Aliquam id laoreet nulla. Suspendisse potenti. Sed auctor arcu pretium, posuere dolor vitae, malesuada augue. Sed vehicula placerat gravida. Sed sagittis erat non orci rutrum scelerisque. Quisque posuere maximus neque. Praesent urna nulla, volutpat ac magna aliquet, ornare ultricies turpis. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        It may be cliche, but many people don't know what they have until it's gone. When a disaster hits and you're stuck trying to catalogue your entire life, the insurance companies ultimately win.
+                                        With Mochi, you can have peace of mind knowing your items are catalogued before an emergency, meaning you can get back to what's important: rebuilding your life.
                                     </p>
                                 </div>
                                 <div className="col-lg-2"></div>

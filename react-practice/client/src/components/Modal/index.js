@@ -12,22 +12,23 @@ class Index extends Component {
     }
 
     render() {
+        console.log('this.props.inputs.itemName', this.props.inputs.itemName);
         return (
-            <Fragment>
+            <div>
                 <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Add Item</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close" >
-                                    <span aria-hidden="true" onChange={this.props.clearInputs}>x</span>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.props.clearInputs}>
+                                    <span aria-hidden="true">x</span>
                                 </button>
                             </div>
                             <div className="modal-body">
                                 <form>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Name of Item (required)</label>
-                                        <input type="text" name="itemName" className="form-control" id="exampleFormControlInput1" defaultValue={this.props.inputs["itemName"]} placeholder={ (this.props.inputs['itemName'] === undefined) ? "Office Desk" : this.props.inputs['itemName'] } onChange={this.props.onChange}/>
+                                        <input type="text" name="itemName" className="form-control" defaultValue={this.props.inputs["itemName"]} placeholder={ (this.props.inputs["itemName"] === undefined) ? "Office Desk" : this.props.inputs["itemName"]} onChange={this.props.onChange}/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Quantity of Item</label>
@@ -73,7 +74,7 @@ class Index extends Component {
                         </div>
                     </div>
                 </div>
-            </Fragment>
+            </div>
         );
     }
 }

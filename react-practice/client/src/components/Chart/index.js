@@ -24,7 +24,7 @@ class Index extends Component {
                 <td>{item.item_attachments}</td>
                 <td>{item.item_notes}</td>
                 <td><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" name={item._id} onClick={this.props.grabExisting} >Update</button></td>
-                <td><button type="button" className="btn btn-outline-danger" id="delete" onClick={this.props.clickDelete}>Delete</button></td>
+                <td><button type="button" className="btn btn-outline-danger" id="delete" name={item._id} onClick={this.props.clickDelete}>Delete</button></td>
             </tr>
         ))
         return itemMap
