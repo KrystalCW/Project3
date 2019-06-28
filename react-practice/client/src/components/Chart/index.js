@@ -36,8 +36,8 @@ class Index extends Component {
                 <div className="col-lg-12" id="landingRow">
                     <div className="card" id="chartCard">
                         <h5 className="card-header">Cataloged Items</h5>
-                        <div className="card-body" id="chartDiv">
-                            <table className="table">
+                        <div className="card-body">
+                            <table className="table" id="chartDiv">
                                 <thead className="thead-light">
                                     <tr>
                                         <th scope="col">#</th>

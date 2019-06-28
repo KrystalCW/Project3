@@ -38,6 +38,7 @@ class Index extends Component {
                                             <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                                             <label className="form-check-label" for="exampleCheck1">I Accept the Terms of Service</label>
                                         </div>
+                                        <a href="./items" class="btn btn-info" role="button">Submit</a>
                                     </form>
                                 </div>
                             </div>
