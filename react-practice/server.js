@@ -1,13 +1,14 @@
 const express = require("express");
-//const path = require("path");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const cors = require("cors");
+var logger = require("morgan");
 
 const app = express();
 
 
-
+app.use(logger("dev"));
+app.use(express.static("public"));
 
 app.use(cors() );
 // Define middleware here
@@ -20,13 +21,14 @@ app.use(routes);
 
 
 // Connect to the Mongo DB
+// mongoose.connect("mongodb://heroku_947brlt3:finalproject1@ds337377.mlab.com:37377/heroku_947brlt3", { useNewUrlParser: true });
 
-const db = require('./config/keys').mongoURI;
+// if (process.env.NODE_ENV === 'dev') {
+//   module.exports = require('./keys_dev');
+// } else {
+  mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/itemslist");
+// }
 
-// mongoose
-//   .connect(db)
-//   .then(() => console.log("MongoDB connection established."))
-//   .catch((err) => console.log(err))
 
   
 const PORT = process.env.PORT || 3001;
