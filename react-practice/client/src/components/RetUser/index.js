@@ -19,8 +19,8 @@ class Index extends Component {
                         <div className="card-body">
                             <form>
                                 <div className="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+                                    <label for="exampleInputEmail1">Sign In</label>
+                                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username"/>
                                 </div>
                                 <div className="form-group">
                                     <label for="exampleInputPassword1">Password</label>
