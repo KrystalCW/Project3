@@ -1,15 +1,7 @@
 import React, { Component } from "react";
 import Modal from '../components/Modal';
-// import ModalTwo from "../components/ModalTwo";
-
-
-// import DeleteBtn from "../components/DeleteBtn";
-// import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-// import { Link } from "react-router-dom";
 import { Row } from "../components/Grid";
-// import { List, ListItem } from "../components/List";
-// import "./reset.css";
 import "./style.css";
 import logo from "../images/mochiLogo.png";
 import Chart from "../components/Chart";
@@ -51,12 +43,10 @@ class Items extends Component {
       .then(res =>
         this.setState({ items: res.data }),
       )
-      .then(console.log(this.state.items))
       .catch(err => console.log(err));
   };
 
   clearInputs = () => {
-    console.log('clearInputs');
     this.setState({
       inputs: {
         "itemID": "new",
@@ -67,13 +57,10 @@ class Items extends Component {
         "description": undefined
       }
     });
-    console.log(this.state.inputs)
   }
 
   handleInputChange = event => {
-    console.log(event.target);
     const { name, value } = event.target;
-    console.log(name);
     let inputs = { ...this.state.inputs };
 
     inputs[name] = value;
@@ -81,13 +68,11 @@ class Items extends Component {
     this.setState({
       inputs: inputs
     });
-    console.log(this.state.inputs)
   };
 
   
   deleteItem = event => {
     const { name } = event.target;
-    console.log(name);
     API.deleteItem(name)
       .then(res => {
         this.clearInputs();
@@ -98,23 +83,20 @@ class Items extends Component {
 
   grabExisting = event => {
     const { name } = event.target;
-    console.log(name);
     if ( name === "new") {
       this.clearInputs();
     } else {
-      console.log(this.state.inputs);
-      console.log('updating..')
       API.getItem(name)
       .then(res => {
         this.setState({
           inputs: {
-            "itemID": name,
-            "itemName": res.data.item_name,
-            "category": res.data.item_categoryName,
-            "quantity": res.data.item_quantity,
-            "price": res.data.item_purchasePrice,
-            "attachment": res.data.item_attachments,
-            "description": res.data.item_notes
+            itemID: name,
+            itemName: res.data.item_name,
+            category: res.data.item_categoryName,
+            quantity: res.data.item_quantity,
+            price: res.data.item_purchasePrice,
+            attachment: res.data.item_attachments,
+            description: res.data.item_notes
           }
         });
         console.log(this.state.inputs)
@@ -125,16 +107,17 @@ class Items extends Component {
 
   updateItem = event => {
     const { name } = event.target;
+    const itemInfo = this.state.inputs;
     console.log(name);
     API.updateItem(name, {
-      item_name: this.state.inputs["itemName"],
-      item_quantity: this.state.inputs["quantity"],
-      item_categoryName: this.state.inputs["category"],
+      item_name: itemInfo.itemName,
+      item_quantity: itemInfo.quantity,
+      item_categoryName: itemInfo.category,
       // item_scheduled: this.state.scheduled,
       // item_originalPurchaseDate: this.state.originalPurchaseDate,
-      item_purchasePrice: this.state.inputs["price"],
-      item_attachments: this.state.inputs["attachment"],
-      item_notes: this.state.inputs["description"],
+      item_purchasePrice: itemInfo.price,
+      item_attachments: itemInfo.attachment,
+      item_notes: itemInfo.description,
     })
     .then(res => this.loadItems())
     .then(this.clearInputs())
@@ -143,17 +126,18 @@ class Items extends Component {
 
   handleFormSubmit = event => {
     console.log(this.state);
+    const itemInfo = this.state.inputs;
     event.preventDefault();
-    if (this.state.inputs["itemName"] && this.state.inputs["quantity"]) {
+    if (itemInfo.itemName && itemInfo.quantity) {
       API.saveItem({
-        item_name: this.state.inputs["itemName"],
-        item_quantity: this.state.inputs["quantity"],
-        item_categoryName: this.state.inputs["category"],
+        item_name: itemInfo.itemName,
+        item_quantity: itemInfo.quantity,
+        item_categoryName: itemInfo.category,
         // item_scheduled: this.state.scheduled,
         // item_originalPurchaseDate: this.state.originalPurchaseDate,
-        item_purchasePrice: this.state.inputs["price"],
-        item_attachments: this.state.inputs["attachment"],
-        item_notes: this.state.inputs["description"],
+        item_purchasePrice: itemInfo.price,
+        item_attachments: itemInfo.attachment,
+        item_notes: itemInfo.description,
       })
         // .then(res => console.log(res))
         .then(res => this.loadItems())
