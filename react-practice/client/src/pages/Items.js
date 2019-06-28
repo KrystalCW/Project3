@@ -6,6 +6,8 @@ import "./style.css";
 import logo from "../images/mochiLogo.png";
 import Chart from "../components/Chart";
 import Welcome from "../components/Welcome";
+import BackBtn from "../components/BackBtn";
+import ImgBox from "../components/ImgBox";
 import BackgroundSlider from 'react-background-slider';
 
 import image1 from "../images/itemBack/coffee.jpg";
@@ -153,26 +155,27 @@ class Items extends Component {
               <Welcome />
             </ Row>
             <Row>
-            <Chart 
-              items={this.state.items}
-              clickDelete={this.deleteItem}
-              grabExisting={this.grabExisting}
-            />
-            {/* <ModalTwo /> */}
-            <Modal
-              inputs={this.state.inputs}
-              onChange={this.handleInputChange}
-              onSubmit={this.handleFormSubmit}
-              clearInputs={this.clearInputs}
-              onUpdate={this.updateItem}
-            />
-        </ Row>
-        <Row>
-          <div className="col-lg-8"></div>
-          <div className="col-lg-4">
-            <img src={logo} id="landingImg" />
-          </div>
-        </Row>
+              <BackBtn />
+              <Chart 
+                items={this.state.items}
+                clickDelete={this.deleteItem}
+                grabExisting={this.grabExisting}
+              />
+              <ImgBox />
+              <Modal
+                inputs={this.state.inputs}
+                onChange={this.handleInputChange}
+                onSubmit={this.handleFormSubmit}
+                clearInputs={this.clearInputs}
+                onUpdate={this.updateItem}
+              />
+            </ Row>
+              <Row>
+                <div className="col-lg-8"></div>
+                <div className="col-lg-4">
+                  <img src={logo} id="landingImg" />
+                </div>
+            </ Row>
         <BackgroundSlider
           images={[image1, image2, image3, image4, image5, image6, image7, image8, image9, image10]}
           duration={8}
