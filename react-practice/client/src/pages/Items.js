@@ -171,7 +171,7 @@ class Items extends Component {
               <Welcome />
             </ Row>
             <Row>
-              <BackBtn />
+              
               <Chart 
                 items={this.state.items}
                 clickDelete={this.deleteItem}
@@ -189,7 +189,10 @@ class Items extends Component {
               <Row>
                 <div className="col-lg-8"></div>
                 <div className="col-lg-4">
-                  <img src={logo} id="landingImg" />
+                  <div className="foo">
+                    {/* <span className="letter" data-letter={logo}></span>    */}
+                  <BackBtn />
+                  </div>
                 </div>
             </ Row>
         <BackgroundSlider
