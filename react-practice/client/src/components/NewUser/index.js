@@ -22,9 +22,13 @@ class Index extends Component {
                                 <div className="card card-body">
                                     <form>
                                         <div className="form-group">
-                                            <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                                            <label for="exampleInputEmail1">Email</label>
+                                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="janedoe1990@aol.com" />
                                             <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                                        </div>
+                                        <div className="form-group">
+                                            <label for="exampleInputPassword1">Name</label>
+                                            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Jane Doe" />
                                         </div>
                                         <div className="form-group">
                                             <label for="exampleInputPassword1">Password</label>

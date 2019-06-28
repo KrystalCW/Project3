@@ -12,19 +12,23 @@
     box-shadow: 
         12px 0 15px -4px rgba(31, 73, 125, 0.8), 
         -12px 0 15px -4px rgba(31, 73, 125, 0.8);
+    opacity: 0.8;
 }
 
 #iconFire{
-    color: red;
+    color: #cfe5fc;
     opacity: 0.7;
 }
 
 #iconWater{
-    color: blue;
+    color: #cfe5fc;
     opacity: 0.7;
+    padding-left: 10px;
 }
 
 #iconStorm{
-    color: yellow;
+    color: #cfe5fc;
     opacity: 0.7;
+    padding-left: 55px;
 }
+
