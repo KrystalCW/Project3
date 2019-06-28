@@ -12,7 +12,7 @@ class Index extends Component {
 
 
     render(){
-        console.log("I was hit");
+        // console.log("I was hit");
         return(
             <Fragment>
                <div className="modal fade" id="exampleModalCenter " tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
