@@ -2,7 +2,7 @@ const express = require("express");
 //const path = require("path");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-
+const cors = require("cors");
 
 const app = express();
 
@@ -23,10 +23,10 @@ app.use(routes);
 
 const db = require('./config/keys').mongoURI;
 
-mongoose
-  .connect(db)
-  .then(() => console.log("MongoDB connection established."))
-  .catch((err) => console.log(err))
+// mongoose
+//   .connect(db)
+//   .then(() => console.log("MongoDB connection established."))
+//   .catch((err) => console.log(err))
 
   
 const PORT = process.env.PORT || 3001;
