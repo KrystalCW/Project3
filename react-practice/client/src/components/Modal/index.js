@@ -12,7 +12,7 @@ class Index extends Component {
     }
 
     render() {
-        console.log('this.props.inputs.itemName', this.props.inputs.itemName);
+        const itemInfo = this.props.inputs;
         return (
             <div>
                 <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -28,15 +28,15 @@ class Index extends Component {
                                 <form>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Name of Item (required)</label>
-                                        <input type="text" name="itemName" className="form-control" defaultValue={this.props.inputs["itemName"]} placeholder={ (this.props.inputs["itemName"] === undefined) ? "Office Desk" : this.props.inputs["itemName"]} onChange={this.props.onChange}/>
+                                        <input type="text" name="itemName" className="form-control" value={itemInfo.itemName || '' } placeholder="Office Desk" onChange={this.props.onChange}/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Quantity of Item</label>
-                                        <input type="number" name="quantity" className="form-control" id="exampleFormControlInput1" placeholder={ (this.props.inputs["quantity"] === undefined) ? 0 : this.props.inputs["quantity"] } defaultValue={this.props.inputs["quantity"]} onChange={this.props.onChange} />
+                                        <input type="number" name="quantity" className="form-control" id="exampleFormControlInput1" placeholder="0" value={itemInfo.quantity || '' } onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlSelect1">Item Category</label>
-                                        <select className="form-control" id="exampleFormControlSelect1" name="category" defaultValue={this.props.inputs["category"]} placeholder={ (this.props.inputs["category"] === undefined) ? "Please Select One" : this.props.inputs["category"] } defaultValue={this.props.inputs["quantity"]} onChange={this.props.onChange}>
+                                        <select className="form-control" id="exampleFormControlSelect1" name="category" value={itemInfo.category || '' } placeholder="Please Select One" onChange={this.props.onChange}>
                                             <option>Please Select One</option>
                                             <option>Furniture</option>
                                             <option>Electronics</option>
@@ -52,15 +52,15 @@ class Index extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlInput1">Price of item</label>
-                                        <input type="text" name="price" className="form-control" id="exampleFormControlInput1" placeholder={ (this.props.inputs["price"] === undefined) ? 3500 : this.props.inputs["price"] } defaultValue={this.props.inputs['price']} onChange={this.props.onChange} />
+                                        <input type="text" name="price" className="form-control" id="exampleFormControlInput1" placeholder="3500" value={itemInfo.price || '' } onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlFile1">Upload attachment</label>
-                                        <input type="file" name="attachment" className="form-control-file" id="exampleFormControlFile1" defaultValue={this.props.inputs["attachment"]}/>
+                                        <input type="file" name="attachment" className="form-control-file" id="exampleFormControlFile1" value={itemInfo.attachment || '' }/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlTextarea1">Description of item</label>
-                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" rows="3" defaultValue={this.props.inputs["description"]} placeholder={ (this.props.inputs["description"] === undefined ) ? "" : this.props.inputs["description"] }onChange={this.props.onChange} />
+                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" rows="3" value={itemInfo.description || '' } placeholder="" onChange={this.props.onChange} />
                                     </div>
                                 </form>
                             </div>
