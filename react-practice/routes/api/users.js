@@ -25,7 +25,6 @@ router.get('/test', (req, res) => res.json({msg: "user works"}));
 //Send data to a post request (which will ultimately be through a form in React, but for now will be checking with Postman (using "x-www-form-urlencoded" in the body)) - however in either way I need to access req.body. And for registration, first I check if there exists a user with the same email in the database.
 
 router.post('/register', (req, res) => {
-
     /* Before I do anything in the server-side with the data input by user, I pass the data to the validateRegisterInput() function. The data (i.e. req.body) includes all the information that the user puts in while registering.
     And get the function's return values assigned to const { errors, isValid }.
     So this is an exmple of Destructuring, where I am pulling the return values of a function and assigning it to two variables within curly braces */
