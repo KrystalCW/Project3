@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
-
-const privateKey = process.env.PRIVATE_KEY.replace(/\\n/g, "\n");
-const publicKey = process.env.PUBLIC_KEY.replace(/\\n/g, "\n");
+const privatekey = require("./keys/private.key").replace(/\\n/g, "\n");
+const publickey = require("./keys/public.key").replace(/\\n/g, "\n");
 
 const options = {
   issuer: "user",
@@ -10,18 +9,18 @@ const options = {
 };
 
 const auth = {
-  generateToken: (ID, user, admin) => {
+  generateToken: (ID, user) => {
     const payload = {
       id: ID,
       email: user,
     };
-    const token = jwt.sign(payload, privateKey, options);
+    const token = jwt.sign(payload, privatekey, options);
     return token;
   },
   verifyToken: cookies => {
     try {
       const token = cookies.authToken;
-      return jwt.verify(token, publicKey, options);
+      return jwt.verify(token, publickey, options);
     } catch (e) {
       return false;
     }
