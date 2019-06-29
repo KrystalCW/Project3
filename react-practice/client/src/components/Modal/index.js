@@ -31,7 +31,7 @@ class Index extends Component {
                                         <input type="text" name="itemName" className="form-control" value={itemInfo.itemName || '' } placeholder="Office Desk" onChange={this.props.onChange}/>
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="exampleFormControlInput1">Quantity of Item</label>
+                                        <label htmlFor="exampleFormControlInput1">Quantity of Item (required)</label>
                                         <input type="number" name="quantity" className="form-control" id="exampleFormControlInput1" placeholder="0" value={itemInfo.quantity || '' } onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
