@@ -17,14 +17,36 @@ class Index extends Component {
         var itemMap = props.map(item => (
             <tr id="row_{items._id}" key={item._id}>
                 <th scope="col"></th>
-                <td>{item.item_name}</td>
-                <td>{item.item_quantity}</td>
-                <td>{item.item_categoryName}</td>
-                <td>{item.item_purchasePrice}</td>
-                <td>{item.item_attachments}</td>
-                <td>{item.item_notes}</td>
-                <td><button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" name={item._id} onClick={this.props.grabExisting} >Update</button></td>
-                <td><button type="button" className="btn btn-outline-danger" id="delete" name={item._id} onClick={this.props.clickDelete}>Delete</button></td>
+                <td>
+                    {item.item_name}
+                </td>
+                <td>
+                    {item.item_quantity}
+                </td>
+                <td>
+                    {item.item_categoryName}
+                </td>
+                <td>
+                    {item.item_purchasePrice}
+                </td>
+                <td>
+                    <button className="btn" data-toggle="modal" data-target=".bd-example-modal-sm">
+                        <i className="fas fa-file"></i>
+                    </button>
+                </td>
+                <td>
+                    {item.item_notes}
+                </td>
+                <td>
+                    <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" name={item._id} onClick={this.props.grabExisting}>
+                        Update
+                    </button>
+                </td>
+                <td>
+                    <button type="button" className="btn btn-outline-danger" id="delete" name={item._id} onClick={this.props.clickDelete}>
+                        Delete
+                    </button>
+                </td>
             </tr>
         ))
         return itemMap
@@ -35,41 +57,94 @@ class Index extends Component {
             <Fragment>
                 <div className="col-lg-12" id="landingRow">
                     <div className="card" id="chartCard">
-                        <h5 className="card-header">Cataloged Items</h5>
+                        <h5 className="card-header">
+                            Cataloged Items
+                        </h5>
                         <div className="card-body" id="chartDiv" data-spy="scroll">
                             <table className="table">
-                                <thead className="thead-light">
+                                <thead className="thead-light" id="chartTable">
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Name of Item</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Category</th>
-                                        <th scope="col">Price of Item($)</th>
-                                        <th scope="col">Attachments</th>
-                                        <th scope="col">Note</th>
-                                        <th scope="col">Update</th>
-                                        <th scope="col">Delete</th>
+                                        <th scope="col">
+                                            #
+                                        </th>
+                                        <th scope="col">
+                                            Name of Item
+                                        </th>
+                                        <th scope="col">
+                                            Quantity
+                                        </th>
+                                        <th scope="col">
+                                            Category
+                                        </th>
+                                        <th scope="col">
+                                            Price of Item($)
+                                        </th>
+                                        <th scope="col">
+                                            Attachments
+                                        </th>
+                                        <th scope="col">
+                                            Note
+                                        </th>
+                                        <th scope="col">
+                                            Update
+                                        </th>
+                                        <th scope="col">
+                                            Delete
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Leather Couch</td>
-                                        <td>1</td>
-                                        <td>Furniture</td>
-                                        <td>$1,100</td>
-                                        <td><button className="btn" data-toggle="modal" data-target=".bd-example-modal-sm"><i className="fas fa-file"></i></button></td>
-                                        <td>This is a great couch</td>
-                                        <td><button type="button" className="btn btn-primary">Update</button></td>
-                                        <td><button type="button" className="btn btn-outline-danger">Delete</button></td> 
+                                        <th scope="row">
+                                            1
+                                        </th>
+                                        <td>
+                                            Leather Couch
+                                        </td>
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            Furniture
+                                        </td>
+                                        <td>
+                                            $1,100
+                                        </td>
+                                        <td>
+                                            <button className="btn" data-toggle="modal" data-target=".bd-example-modal-sm">
+                                                <i className="fas fa-file"></i>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            This is a great couch
+                                        </td>
+                                        <td>
+                                            <button type="button" className="btn btn-primary">
+                                                Update
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button type="button" className="btn btn-outline-danger">
+                                                Delete
+                                            </button>
+                                        </td> 
                                     </tr>
                                     {this.displayTableRows(this.props.items)}
                                 </tbody>
                             </table>
                             {/* <button type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" onClick={this.props.grabExisting}>Add new item</button> */}
-                            <button type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" name="new" onClick={this.props.grabExisting}>Add new item</button>
+                            
+                        </div>
+                        <div className="row">
+                            <div className="col-lg-3">
+                                <button type="button" className="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" name="new"  id="addBtn" onClick={this.props.grabExisting}>
+                                    Add new item
+                                </button>
+                            </div>
+                            <div className="col-lg-9"></div>
                         </div>
                     </div>
+                    
                 </div>
             </Fragment>
         );

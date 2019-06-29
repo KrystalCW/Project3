@@ -3,7 +3,18 @@
     
 }
 
-/* #chartDiv{
-    overflow-x: hidden;
-    overflow-y: scroll;
-} */
+#chartDiv{
+    position: relative;
+    height: 280px;
+    overflow: auto;
+}
+
+#chartTable{
+    /* display: block; */
+}
+
+#addBtn{
+    margin-left: 15pt;
+    margin-bottom: 10pt;
+    margin-top: 10pt;
+}

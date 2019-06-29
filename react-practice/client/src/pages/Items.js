@@ -155,7 +155,6 @@ class Items extends Component {
               <Welcome />
             </ Row>
             <Row>
-              
               <Chart 
                 items={this.state.items}
                 clickDelete={this.deleteItem}
@@ -174,7 +173,6 @@ class Items extends Component {
                 <div className="col-lg-8"></div>
                 <div className="col-lg-4">
                   <div className="foo">
-                    {/* <span className="letter" data-letter={logo}></span>    */}
                   <BackBtn />
                   </div>
                 </div>

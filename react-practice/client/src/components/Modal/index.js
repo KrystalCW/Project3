@@ -60,14 +60,14 @@ class Index extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlTextarea1">Description of item</label>
-                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" rows="3" value={itemInfo.description || '' } placeholder="" onChange={this.props.onChange} />
+                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" maxlength="60" rows="3" value={itemInfo.description || '' } placeholder="" onChange={this.props.onChange} />
                                     </div>
                                 </form>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal" onChange={this.props.clearInputs}>Close</button>
                                 { (this.props.inputs["itemID"] === "new") ? 
-                                    <button type="button" className="btn btn-warning" id="update" onClick={this.props.onSubmit}>Add New Item</button> :
+                                    <button type="button" className="btn btn-warning" id="update"  onClick={this.props.onSubmit}>Add New Item</button> :
                                     <button type="button" name={this.props.inputs["itemID"]} className="btn btn-warning" id="update" onClick={this.props.onUpdate}>Update Item</button>
                                 }                       
                             </div>
