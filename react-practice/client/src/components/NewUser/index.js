@@ -28,7 +28,7 @@ class Index extends Component {
                                         </div>
                                         <div className="form-group">
                                             <label for="exampleInputPassword1">Name</label>
-                                            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Jane Doe" />
+                                            <input type="name" className="form-control" id="exampleInputPassword1" placeholder="Jane Doe" />
                                         </div>
                                         <div className="form-group">
                                             <label for="exampleInputPassword1">Password</label>
