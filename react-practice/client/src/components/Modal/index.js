@@ -55,8 +55,11 @@ class Index extends Component {
                                         <input type="text" name="price" className="form-control" id="exampleFormControlInput1" placeholder="3500" value={itemInfo.price || '' } onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="exampleFormControlFile1">Upload attachment</label>
-                                        <input type="file" name="attachment" className="form-control-file" id="exampleFormControlFile1" value={itemInfo.attachment || '' }/>
+                                        <button type="button" onClick={this.props.getAttachments} className="upload-button">Upload Attachments</button>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="exampleFormControlFile1">Attachment</label>
+                                        <input type="test" name="attachment" className="form-control-file" id="exampleFormControlFile1" value={this.props.attachment || itemInfo.attachment || '' }/>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlTextarea1">Description of item</label>

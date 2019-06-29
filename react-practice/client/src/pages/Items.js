@@ -29,7 +29,8 @@ class Items extends Component {
     super(props);
     this.state = {
         items: [],
-        inputs: {}
+        inputs: {},
+        html: ""
     };
 
     this.baseState = this
@@ -56,6 +57,7 @@ class Items extends Component {
         "category": undefined,
         "quantity": undefined,
         "price": undefined,
+        "attachment": undefined,
         "description": undefined
       }
     });
@@ -126,6 +128,32 @@ class Items extends Component {
     .catch(err => console.log(err))
   }
 
+  ourFunc(){
+    return new Promise((resolve, reject) =>{
+      // console.log('got here');
+      // resolve('todd');
+        window.cloudinary.openUploadWidget({ cloud_name: 'mochi-app', upload_preset: 'z57kesqo', tags:['xmas']},
+        function(error, result) {
+            if (result.event === "success") {
+                console.log(result);
+                resolve(result);
+            } else {
+              console.log('error', error);
+            }
+
+        });
+    })
+  }
+
+  uploadWidget() {
+      this.ourFunc().then(result =>{
+        console.log('result', result);
+          this.setState({ html: result.info.secure_url });
+          console.log(this.state.html)
+      })
+
+  }
+
   handleFormSubmit = event => {
     console.log(this.state);
     const itemInfo = this.state.inputs;
@@ -164,10 +192,12 @@ class Items extends Component {
               <ImgBox />
               <Modal
                 inputs={this.state.inputs}
+                attachment={this.state.html}
                 onChange={this.handleInputChange}
                 onSubmit={this.handleFormSubmit}
                 clearInputs={this.clearInputs}
                 onUpdate={this.updateItem}
+                getAttachments={this.uploadWidget.bind(this)}
               />
             </ Row>
               <Row>
