@@ -29,11 +29,23 @@ class Index extends Component {
                 <td>
                     {item.item_purchasePrice}
                 </td>
-                <td>
+                { (item.item_attachments) ?
+                    <td>
+                    {/* <button className="btn" data-toggle="modal" data-target=".bd-example-modal-sm" name={item.item_attachments} onClick={this.props.getPicture}> */}
+                        <a href={item.item_attachments} class="btn btn-info" role="button" target="_blank">
+                            <i className="fas fa-file"></i>
+                        </a>
+                    </td> :
+                    <td>
+                        <button className="btn" name="empty" onClick={this.props.getPicture}>
+                        </button>
+                    </td>
+                }
+                {/* <td>
                     <button className="btn" data-toggle="modal" data-target=".bd-example-modal-sm">
                         <i className="fas fa-file"></i>
                     </button>
-                </td>
+                </td> */}
                 <td>
                     {item.item_notes}
                 </td>
