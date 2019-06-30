@@ -73,7 +73,7 @@ class Index extends Component {
                                 </div>
                             </div>
                             <hr />
-                            <button onClick={(e) => this.signup(e)} type="submit" className="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" id="signUpBtn">Sign Up!</button>
+                            <button onClick={(e) => this.signup(e)} type="submit" className="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1" id="signUpBtn">Sign Up!</button>
                         </div>
                     </div> 
                 </div>

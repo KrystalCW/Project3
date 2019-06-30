@@ -51,7 +51,7 @@ class Index extends Component {
         return (
         <div id="indexBody">
             <div className="parallax"></div>
-            <img src={logo} />
+            <img alt="" src={logo} />
             <div className="container" id="topCont">
                 <Row>
                     <NewUser /> 
