@@ -8,6 +8,11 @@
     src: url(../images/MajoramSansItalic.otf) format("truetype");
 }
 
+@font-face{
+    font-family: "Leckerli One";
+    src: url(../images/LeckerliOne-Regular.ttf) format("truetype");
+}
+
 
 
 .parallax {
@@ -54,6 +59,7 @@
     box-shadow: 
         12px 0 15px -4px rgba(31, 73, 125, 0.8), 
         -12px 0 15px -4px rgba(31, 73, 125, 0.8);
+        
 }
 
 
@@ -83,7 +89,6 @@ img{
     height: auto;
     width: 30%;
 }
-
 
 input {
     cursor: pointer;

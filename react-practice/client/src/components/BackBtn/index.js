@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../images/mochiLogo.png";
 import "./style.css";
 
 const BackBtn = () => {
   return(
-    <Link to ="/">
-      <button type="button" class="btn btn-lg btn-primary" >
-          Go Home 
-      </button> 
-    </Link>  
+      <Link to ="/">
+        <img src={logo} id="landingImg" />
+      </Link>
   );
 }
   

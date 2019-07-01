@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 // import DeleteBtn from "../components/DeleteBtn";
 // import Jumbotron from "../components/Jumbotron";
-import API from "../utils/API";
+// import API from "../utils/API";
 // import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+import { Row } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn, CheckBox } from "../components/Form";
+// import { Input, TextArea, FormBtn, CheckBox } from "../components/Form";
 // import "./reset.css";
 import "./style.css";
 
@@ -51,7 +51,7 @@ class Index extends Component {
         return (
         <div id="indexBody">
             <div className="parallax"></div>
-            <img src={logo} />
+            <img alt="" src={logo} />
             <div className="container" id="topCont">
                 <Row>
                     <NewUser /> 

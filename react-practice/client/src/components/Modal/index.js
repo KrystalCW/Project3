@@ -31,7 +31,7 @@ class Index extends Component {
                                         <input type="text" name="itemName" className="form-control" value={itemInfo.itemName || '' } placeholder="Office Desk" onChange={this.props.onChange}/>
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="exampleFormControlInput1">Quantity of Item</label>
+                                        <label htmlFor="exampleFormControlInput1">Quantity of Item (required)</label>
                                         <input type="number" name="quantity" className="form-control" id="exampleFormControlInput1" placeholder="0" value={itemInfo.quantity || '' } onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
@@ -55,19 +55,22 @@ class Index extends Component {
                                         <input type="text" name="price" className="form-control" id="exampleFormControlInput1" placeholder="3500" value={itemInfo.price || '' } onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="exampleFormControlFile1">Upload attachment</label>
-                                        <input type="file" name="attachment" className="form-control-file" id="exampleFormControlFile1" value={itemInfo.attachment || '' }/>
+                                        <button type="button" onClick={this.props.getAttachments} className="upload-button">Upload Attachments</button>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="exampleFormControlFile1">Attachment</label>
+                                        <input type="test" name="attachment" className="form-control-file" id="exampleFormControlFile1" value={this.props.attachment || itemInfo.attachment || '' } onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlTextarea1">Description of item</label>
-                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" rows="3" value={itemInfo.description || '' } placeholder="" onChange={this.props.onChange} />
+                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" maxLength="60" rows="3" value={itemInfo.description || '' } placeholder="" onChange={this.props.onChange} />
                                     </div>
                                 </form>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal" onChange={this.props.clearInputs}>Close</button>
                                 { (this.props.inputs["itemID"] === "new") ? 
-                                    <button type="button" className="btn btn-warning" id="update" onClick={this.props.onSubmit}>Add New Item</button> :
+                                    <button type="button" className="btn btn-warning" id="update"  onClick={this.props.onSubmit}>Add New Item</button> :
                                     <button type="button" name={this.props.inputs["itemID"]} className="btn btn-warning" id="update" onClick={this.props.onUpdate}>Update Item</button>
                                 }                       
                             </div>
