@@ -3,7 +3,7 @@ import Modal from '../components/Modal';
 import API from "../utils/API";
 import { Row } from "../components/Grid";
 import "./style.css";
-import logo from "../images/mochiLogo.png";
+//import logo from "../images/mochiLogo.png";
 import Chart from "../components/Chart";
 import Welcome from "../components/Welcome";
 import BackBtn from "../components/BackBtn";
