@@ -59,11 +59,11 @@ class Index extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlFile1">Attachment</label>
-                                        <input type="test" name="attachment" className="form-control-file" id="exampleFormControlFile1" value={this.props.attachment || itemInfo.attachment || '' }/>
+                                        <input type="test" name="attachment" className="form-control-file" id="exampleFormControlFile1" value={this.props.attachment || itemInfo.attachment || '' } onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlTextarea1">Description of item</label>
-                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" maxlength="60" rows="3" value={itemInfo.description || '' } placeholder="" onChange={this.props.onChange} />
+                                        <textarea className="form-control" name="description" id="exampleFormControlTextarea1" maxLength="60" rows="3" value={itemInfo.description || '' } placeholder="" onChange={this.props.onChange} />
                                     </div>
                                 </form>
                             </div>

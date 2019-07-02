@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 //const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
-//const passport = require('passport');
+const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const keys = require('../../auth');
 
@@ -28,6 +28,7 @@ router.post('/register', (req, res) => {
     /* Before I do anything in the server-side with the data input by user, I pass the data to the validateRegisterInput() function. The data (i.e. req.body) includes all the information that the user puts in while registering.
     And get the function's return values assigned to const { errors, isValid }.
     So this is an exmple of Destructuring, where I am pulling the return values of a function and assigning it to two variables within curly braces */
+/*
     const { errors, isValid } = validateRegisterInput(req.body);
 
     // If the input is not valid res.send the entire errors object.
@@ -61,8 +62,9 @@ router.post('/register', (req, res) => {
             });
         });
      }
-  })
-})
+  });
+*/
+});
 
 // Now implement the same routes for logging in to protected routes where I have to match email / password
 
@@ -70,6 +72,7 @@ router.post('/login', (req, res) => {
 
     /* I pass the data to the validateRegisterInput() function. The data (i.e. req.body) includes all the information that the user puts in while registering.
     And get the function's return values assigned to const { errors, isValid }. */
+/*
     const { errors, isValid } = validateLoginInput(req.body);
     // Check Validation
     if(!isValid) {
@@ -111,6 +114,7 @@ router.post('/login', (req, res) => {
             }
         });
     });
+*/
 });
 
 // @route   GET api/users/current
@@ -119,7 +123,7 @@ router.post('/login', (req, res) => {
 // function to authenticate request to a protected route (i.e. which requires login credentials) - http://www.passportjs.org/docs/authenticate/ - disabling session persistance so credentials need to be supplied with each request
 router.get(
     '/current',
-    passport.authenticate('jwt', { session: false }),
+    //passport.authenticate('jwt', { session: false }),
     (req, res) => {
       res.json({
         id: req.user.id,
