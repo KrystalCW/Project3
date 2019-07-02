@@ -5,7 +5,7 @@
 
 #chartDiv{
     position: relative;
-    height: 280px;
+    height: 255px;
     overflow: auto;
 }
 
