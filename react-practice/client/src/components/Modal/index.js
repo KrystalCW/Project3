@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import "./style.css";
 
 
@@ -59,7 +59,7 @@ class Index extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlFile1">Attachment</label>
-                                        <input type="test" name="attachment" className="form-control-file" id="exampleFormControlFile1" value={this.props.attachment || itemInfo.attachment || '' } onChange={this.props.onChange} />
+                                        <input type="button" name="attachment" className="form-control-file" id="exampleFormControlFile1" value={this.props.attachment || itemInfo.attachment || '' } onChange={this.props.onChange} />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleFormControlTextarea1">Description of item</label>
@@ -70,7 +70,7 @@ class Index extends Component {
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal" onChange={this.props.clearInputs}>Close</button>
                                 { (this.props.inputs["itemID"] === "new") ? 
-                                    <button type="button" className="btn btn-warning" id="update"  onClick={this.props.onSubmit}>Add New Item</button> :
+                                    <button type="button" className="btn btn-warning" id="update" data-dismiss="modal"  onClick={this.props.onSubmit}>Add New Item</button> :
                                     <button type="button" name={this.props.inputs["itemID"]} className="btn btn-warning" id="update" onClick={this.props.onUpdate}>Update Item</button>
                                 }                       
                             </div>

@@ -6,7 +6,7 @@ import "./style.css";
 const BackBtn = () => {
   return(
       <Link to ="/">
-        <img src={logo} id="landingImg" />
+        <img src={logo} id="landingImg"  alt="logo"/>
       </Link>
   );
 }

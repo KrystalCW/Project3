@@ -13,6 +13,10 @@
     src: url(../images/LeckerliOne-Regular.ttf) format("truetype");
 }
 
+@font-face{
+    font-family: "Annabel";
+    src: url(../images/annabel.ttf) format("truetype");
+}
 
 
 .parallax {
@@ -61,7 +65,6 @@
         -12px 0 15px -4px rgba(31, 73, 125, 0.8);
         
 }
-
 
 #instructDiv{
     padding-top: 35pt;
