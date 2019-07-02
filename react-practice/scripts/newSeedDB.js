@@ -21,6 +21,8 @@ const itemSeed = [
     item_locationDescription: "Living Room - Upstairs",
     item_categoryName: "Furniture",
     item_categoryDescription: "Home - Office - Furniture",
+    item_attachments: "https://res.cloudinary.com/mochi-app/image/upload/v1561970745/couch_shyhom.jpg"
+    /*
     item_attachments: [
         {
             file_name: "couch_photo.jpg",
@@ -35,6 +37,7 @@ const itemSeed = [
             file_desciption: "Couch Receipt"
         }
     ]
+    */
   },
   {
     item_name: "Piano",
@@ -51,6 +54,8 @@ const itemSeed = [
     item_locationDescription: "Living Room - Downstairs",
     item_categoryName: "Musical Instruments",
     item_categoryDescription: "Musical Instruments",
+    item_attachments: "https://res.cloudinary.com/mochi-app/image/upload/v1561968303/piano_kdcz4e.jpg"
+    /*
     item_attachments: [
         {
             file_name: "piano_photo.jpg",
@@ -64,7 +69,8 @@ const itemSeed = [
             file_type: "jpg",
             file_desciption: "Piano Receipt"
         }
-    ] 
+    ]
+    */ 
   },  
   {
     item_name: "Laptop",
@@ -81,6 +87,8 @@ const itemSeed = [
     item_locationDescription: "Home Office - Downstairs",
     item_categoryName: "Electronics",
     item_categoryDescription: "Electronics - Home Office",  
+    item_attachments: ""
+    /*
     item_attachments: [
         {
             file_name: "laptop_photo.jpg",
@@ -95,6 +103,7 @@ const itemSeed = [
             file_desciption: "Laptop Receipt"
         }
     ]
+    */
   },  
   {
     item_name: "Gun",
@@ -111,6 +120,8 @@ const itemSeed = [
     item_locationDescription: "Safe - Upstairs",
     item_categoryName: "Sporting Goods",
     item_categoryDescription: "Hunting - Sporting Goods",
+    item_attachments: ""
+    /*
     item_attachments: [
         {
             file_name: "gun_photo.jpg",
@@ -125,6 +136,7 @@ const itemSeed = [
             file_desciption: "Gun Receipt"
         }
     ]
+    */
   },  
   {
     item_name: "TV",
@@ -141,6 +153,8 @@ const itemSeed = [
     item_locationDescription: "Living Room - Upstairs",
     item_categoryName: "Electronics",
     item_categoryDescription: "Electronics - Home Office",  
+    item_attachments: ""
+    /*
     item_attachments: [
         {
             file_name: "tv_photo.jpg",
@@ -155,6 +169,7 @@ const itemSeed = [
             file_desciption: "TV Receipt"
         }
     ]
+    */
   }
 ] 
 
