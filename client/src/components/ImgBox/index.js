@@ -14,9 +14,9 @@ class Index extends Component {
     render() {
         return(
             <Fragment>
-                <div class="modal fade bd-example-modal-sm" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
+                <div className="modal fade bd-example-modal-sm" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div className="modal-dialog modal-sm" role="document">
+                        <div className="modal-content">
                             <img alt="" src={logo} />
                         </div>
                     </div>
