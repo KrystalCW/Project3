@@ -59,7 +59,7 @@ class Items extends Component {
         "price": undefined,
         "attachment": undefined,
         "description": undefined
-      }
+      },
     });
   }
 
@@ -72,6 +72,7 @@ class Items extends Component {
     this.setState({
       inputs: inputs
     });
+    console.log(this.state.inputs)
   };
 
   
@@ -148,8 +149,9 @@ class Items extends Component {
   uploadWidget() {
       this.ourFunc().then(result =>{
         console.log('result', result);
-          this.setState({ html: result.info.secure_url });
-          console.log(this.state.html)
+        const inputs = { ...this.state.inputs };
+        inputs.attachment = result.info.secure_url
+          this.setState({ inputs });
       })
 
   }
@@ -157,6 +159,7 @@ class Items extends Component {
   handleFormSubmit = event => {
     console.log(this.state);
     const itemInfo = this.state.inputs;
+
     event.preventDefault();
     if (itemInfo.itemName && itemInfo.quantity) {
       API.saveItem({
@@ -191,7 +194,6 @@ class Items extends Component {
               <ImgBox />
               <Modal
                 inputs={this.state.inputs}
-                attachment={this.state.html}
                 onChange={this.handleInputChange}
                 onSubmit={this.handleFormSubmit}
                 clearInputs={this.clearInputs}
