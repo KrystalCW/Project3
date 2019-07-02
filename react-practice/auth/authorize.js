@@ -1,4 +1,6 @@
 const jwt = require("jsonwebtoken");
+const privatekey = require("./keys/private.key").replace(/\\n/g, "\n");
+const publickey = require("./keys/public.key").replace(/\\n/g, "\n");
 
 const options = {
   issuer: "user",
