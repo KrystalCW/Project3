@@ -106,41 +106,6 @@ class Index extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            1
-                                        </th>
-                                        <td>
-                                            Leather Couch
-                                        </td>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            Furniture
-                                        </td>
-                                        <td>
-                                            $1,100
-                                        </td>
-                                        <td>
-                                            <button className="btn" data-toggle="modal" data-target=".bd-example-modal-sm">
-                                                <i className="fas fa-file"></i>
-                                            </button>
-                                        </td>
-                                        <td>
-                                            This is a great couch
-                                        </td>
-                                        <td>
-                                            <button type="button" className="btn btn-primary">
-                                                Update
-                                            </button>
-                                        </td>
-                                        <td>
-                                            <button type="button" className="btn btn-outline-danger">
-                                                Delete
-                                            </button>
-                                        </td> 
-                                    </tr>
                                     {this.displayTableRows(this.props.items)}
                                 </tbody>
                             </table>

@@ -72,7 +72,6 @@ class Items extends Component {
     this.setState({
       inputs: inputs
     });
-    console.log(this.state.inputs)
   };
 
   
@@ -104,7 +103,6 @@ class Items extends Component {
             description: res.data.item_notes
           }
         });
-        console.log(this.state.inputs)
       })
       .catch(err => console.log(err))
     }
@@ -113,13 +111,10 @@ class Items extends Component {
   updateItem = event => {
     const { name } = event.target;
     const itemInfo = this.state.inputs;
-    console.log(name);
     API.updateItem(name, {
       item_name: itemInfo.itemName,
       item_quantity: itemInfo.quantity,
       item_categoryName: itemInfo.category,
-      // item_scheduled: this.state.scheduled,
-      // item_originalPurchaseDate: this.state.originalPurchaseDate,
       item_purchasePrice: itemInfo.price,
       item_attachments: itemInfo.attachment,
       item_notes: itemInfo.description,
@@ -131,12 +126,9 @@ class Items extends Component {
 
   ourFunc(){
     return new Promise((resolve, reject) =>{
-      // console.log('got here');
-      // resolve('todd');
         window.cloudinary.openUploadWidget({ cloud_name: 'mochi-app', upload_preset: 'z57kesqo', tags:['xmas']},
         function(error, result) {
             if (result.event === "success") {
-                console.log(result);
                 resolve(result);
             } else {
               console.log('error', error);
@@ -148,7 +140,6 @@ class Items extends Component {
 
   uploadWidget() {
       this.ourFunc().then(result =>{
-        console.log('result', result);
         const inputs = { ...this.state.inputs };
         inputs.attachment = result.info.secure_url
           this.setState({ inputs });
@@ -157,22 +148,17 @@ class Items extends Component {
   }
 
   handleFormSubmit = event => {
-    console.log(this.state);
     const itemInfo = this.state.inputs;
-
     event.preventDefault();
     if (itemInfo.itemName && itemInfo.quantity) {
       API.saveItem({
         item_name: itemInfo.itemName,
         item_quantity: itemInfo.quantity,
         item_categoryName: itemInfo.category,
-        // item_scheduled: this.state.scheduled,
-        // item_originalPurchaseDate: this.state.originalPurchaseDate,
         item_purchasePrice: itemInfo.price,
         item_attachments: itemInfo.attachment,
         item_notes: itemInfo.description,
       })
-        // .then(res => console.log(res))
         .then(res => this.loadItems())
         .then(this.clearInputs())
         .catch(err => console.log(err))
