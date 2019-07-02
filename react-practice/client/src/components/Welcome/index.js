@@ -7,9 +7,9 @@ class Index extends Component {
         return(
             <Fragment>
                 <div className="col-lg" id="landingTitle">
-                    <h1 id="welcome">
+                    <p id="welcome">
                         Welcome
-                    </h1>
+                    </p>
                 </div>
             </Fragment>
         );

@@ -32,7 +32,7 @@ class Index extends Component {
                 { (item.item_attachments) ?
                     <td>
                     {/* <button className="btn" data-toggle="modal" data-target=".bd-example-modal-sm" name={item.item_attachments} onClick={this.props.getPicture}> */}
-                        <a href={item.item_attachments} class="btn btn-info" role="button" target="_blank">
+                        <a href={item.item_attachments} className="btn btn-info" role="button" target="_blank" rel="noopener noreferrer">
                             <i className="fas fa-file"></i>
                         </a>
                     </td> :
