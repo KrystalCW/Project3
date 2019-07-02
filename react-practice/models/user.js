@@ -88,24 +88,6 @@ UserSchema.methods.lastUpdatedDate = function() {
 // This creates our model from the above schema, using mongoose's model method
 const User = mongoose.model("User", UserSchema);
 
-UserSchema.pre('save', function(next) {
-  let user = this; // This is how I access UserSchema object
-
-  if(!user.isModified('password')) return next();
-
-  //for new password
-  if(user.password) {
-    bcrypt.genSalt(10, function(err, salt) {
-      if (err) return next(err);
-      bcrypt.hash(user.password, salt, null, function(err, hash) {
-        if (err) return next(err);
-        user.password = hash;
-        next(err);
-      });
-    });
-  }
-});
-
 
 
 // Export the User model
