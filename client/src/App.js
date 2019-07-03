@@ -6,6 +6,8 @@ import Index from "./pages/Index";
 // import NoMatch from "./pages/NoMatch";
 // import Nav from "./components/Nav";
 
+console.log("loaded something");
+
 function App() {
   console.log("loaded app");
   return (
