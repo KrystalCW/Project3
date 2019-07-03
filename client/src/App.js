@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 // import Nav from "./components/Nav";
 
 function App() {
+  console.log("loaded app");
   return (
     <Router>
       <div>
