@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js",
-    "build": "npm webpack --config ./config/webpack.config.js --mode production"
+    "server": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
