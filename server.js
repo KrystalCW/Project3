@@ -16,7 +16,7 @@ require("./config/passport");
 
 
 app.use(logger("dev"));
-app.use(express.static("./client/public"));
+app.use(express.static("./client/build"));
 
 app.use(cors() );
 // Define middleware here
