@@ -5,10 +5,10 @@ var BUILD_DIR = path.resolve(__dirname, '../client/public');
 var APP_DIR = path.resolve(__dirname, '../client/src/pages');
 
 var config = {
-    entry: APP_DIR + '/Items.js',
+    entry: APP_DIR + '/App.js',
     output: {
         path: BUILD_DIR,
-        filename: 'bundle.js'
+        filename: '/bundle.js'
     },
     module : {
         loaders : [
