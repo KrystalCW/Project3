@@ -8,7 +8,7 @@ var config = {
     entry: APP_DIR + '/Items.js',
     output: {
         path: BUILD_DIR,
-        filename: 'bundle.js'
+        filename: '/client/public/bundle.js'
     },
     module : {
         loaders : [
