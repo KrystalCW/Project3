@@ -3,6 +3,7 @@ import axios from "axios";
 export default {
   // Gets all books
   getItems: function() {
+    console.log("got here");
     return axios.get("/items");
   },
   // Gets the book with the given id
