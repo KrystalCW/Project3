@@ -1,14 +1,14 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var BUILD_DIR = path.resolve(__dirname, 'client/public');
-var APP_DIR = path.resolve(__dirname, 'client/src/pages');
+var BUILD_DIR = path.resolve(__dirname, '../client/public');
+var APP_DIR = path.resolve(__dirname, '../client/src/pages');
 
 var config = {
     entry: APP_DIR + '/Items.js',
     output: {
         path: BUILD_DIR,
-        filename: '/client/public/bundle.js'
+        filename: 'bundle.js'
     },
     module : {
         loaders : [

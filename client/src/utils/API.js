@@ -18,6 +18,6 @@ export default {
     return axios.post("http://localhost:3001/api/items", itemData);
   },
   updateItem: function(id, itemData) {
-    return axios.put("http://localhost:3001/api/items" + id + "/", itemData)
+    return axios.put("http://localhost:3001/api/items/" + id + "/", itemData)
   }
 };
