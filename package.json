@@ -31,9 +31,9 @@
     "react-bootstrap": "^1.0.0-beta.9",
     "react-scroll-parallax": "^2.1.2",
     "validator": "^11.0.0",
-    "webpack": "^4.35.2"
+    "webpack": "^5.75.0"
   },
   "devDependencies": {
-    "webpack-cli": "^3.3.5"
+    "webpack-cli": "^5.0.1"
   }
 }
